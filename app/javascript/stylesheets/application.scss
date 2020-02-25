@@ -4,6 +4,19 @@
 
 @import './static_pages.scss';
 
+.btn {
+    margin: 10px
+}
+
+
+.navbar-nav, ul, li {
+    list-style: none; /* Remove list bullets */
+    padding: 0;
+    margin: 0;
+  }
+
+  
+
 // .cards-list {
 //     z-index: 0;
 //     width: 100%;
