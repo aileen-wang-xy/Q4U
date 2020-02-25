@@ -24,14 +24,24 @@
 
   
     <% if user_signed_in? %>
-
-    <%= link_to edit_user_registration_path, class: 'btn btn-light' do %>Edit registration<% end %>
-    <%= link_to destroy_user_session_path, :method => :delete, class: 'btn btn-light' do%>Logout<% end %>
+      
+      <% if current_user.superadmin_role? %>
+        
+        <li><a href="#">Hi admin</a></li>
+        <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete , class: 'btn btn-light'%></li>
+        <li><%= link_to 'dashboard', rails_admin_path, class: 'btn btn-light'%></li>
+      
+      <% else %>
+        
+        <li><a href="#">Hi <%= current_user.email %></a></li>
+        <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete , class: 'btn btn-light'%></li>
+      
+      <% end %>
 
     <% else %>
 
-    <%= link_to new_user_registration_path, class: 'btn btn-light' do %>Sign in<% end %>
-    <%= link_to new_user_session_path, class: 'btn btn-light' do  %>  Login <% end %>
+      <%= link_to new_user_registration_path, class: 'btn btn-light' do %>Sign up<% end %>
+      <%= link_to new_user_session_path, class: 'btn btn-light' do  %>Login<% end %>
 
     <% end %>
 
