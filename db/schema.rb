@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_24_203556) do
+ActiveRecord::Schema.define(version: 2020_03_07_175402) do
+
+  create_table "posts", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "service_type"
+    t.string "spot_name"
+    t.string "address"
+    t.integer "fee"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.text "description"
+    t.string "contact_name"
+    t.string "contactno"
+    t.string "contact_email"
+    t.integer "constraint"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +45,5 @@ ActiveRecord::Schema.define(version: 2020_02_24_203556) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "posts", "users"
 end

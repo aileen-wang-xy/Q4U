@@ -26,3 +26,4 @@ document.addEventListener("turbolinks:load", () => {
 })
 
 import './bootstrap_custom.js'
+import './flatpickr.js'

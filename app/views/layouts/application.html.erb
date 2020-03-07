@@ -3,6 +3,7 @@
   <head>
     <title>Q4U</title>
 
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= csrf_meta_tags %>
@@ -11,14 +12,6 @@
 
   <body>
   
-    
-
-  
-    
-
-
-
-
 
 
 <nav class="navbar navbar-expand-lg  ">
@@ -28,27 +21,7 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarColor02">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/"></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#"></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#"></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#"></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#"></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#"></a>
-      </li>
-    </ul>
-    
+    <ul class="navbar-nav mr-auto"></ul>
 
 <% if user_signed_in? %>
       
@@ -67,37 +40,13 @@
 
     <% else %>
 
-      <%= link_to new_user_registration_path, class: 'btn btn-success my-2 my-sm-0' do %>Sign up<% end %>
-      <%= link_to new_user_session_path, class: 'btn btn-warning my-2 my-sm-0' do  %>Login<% end %>
+      <%= link_to new_user_registration_path, class: 'btn btn-secondary my-2 my-sm-0' do %>Sign up<% end %>
+      <%= link_to new_user_session_path, class: 'btn btn-secondary my-2 my-sm-0' do  %>Login<% end %>
 
     <% end %>
 
-
-
-
-
-    
-
   </div>
 </nav>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -113,16 +62,14 @@
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Requests</a>
+        <a class="nav-link" href="/posts">Posts</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Provides</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Make Request</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Provide Service</a>
+        <% if user_signed_in? %>
+        <a class="nav-link" href="/posts/new">Create My Posts</a>
+        <% else %>
+        <a class="nav-link" href="/users/sign_in">Create My Posts</a>
+        <% end %>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Help</a>
@@ -145,9 +92,11 @@
       <% end %>
       </script>
     <% end %>
+  
   </div>
       <%= yield %>
-    </div>
+      
+  </div>
 
 
   </body>
