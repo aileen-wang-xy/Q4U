@@ -26,6 +26,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 gem 'rails_admin', git: 'https://github.com/sferik/rails_admin.git'
 gem 'cancancan'
+# Provides a better error page for Rails and other Rack apps
+gem 'better_errors', '~> 2.6'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

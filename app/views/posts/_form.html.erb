@@ -1,3 +1,5 @@
+<section class="section">
+<div class="container" >
 <%= form_with(model: post, local: true) do |form| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
@@ -17,61 +19,129 @@
   </div>
 
   <div class="field">
-    <%= form.label :service_type %>
-    <%= form.text_field :service_type %>
+    <div class="row">
+      <div class="col-3">
+        <%= form.label :service_type %>
+      </div>
+      <div class="col-9">
+        <%= form.text_field :service_type %>
+      </div>
+    </div>
   </div>
 
   <div class="field">
-    <%= form.label :spot_name %>
-    <%= form.text_field :spot_name %>
+    <div class="row">
+      <div class="col-3">
+        <%= form.label :spot_name %>
+      </div>
+      <div class="col-9">  
+        <%= form.text_field :spot_name %>
+      </div>
+    </div>
   </div>
 
   <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
+    <div class="row">
+      <div class="col-3">
+        <%= form.label :address %>
+      </div>
+      <div class="col-9">  
+        <%= form.text_field :address %>
+      </div>
+    </div>
   </div>
 
   <div class="field">
-    <%= form.label :fee %>
-    <%= form.number_field :fee %>
+    <div class="row">
+      <div class="col-3">
+        <%= form.label :fee %>
+      </div>
+      <div class="col-9">  
+        <%= form.number_field :fee %>
+      </div>
+    </div>
   </div>
 
   <div class="field">
-    <%= form.label :start_time %>
-    <%= form.text_field :start_time, data: { behavior: "flatpickr" } %>
+    <div class="row">
+      <div class="col-3">
+        <%= form.label :start_time %>
+      </div>
+      <div class="col-3">  
+        <%= form.text_field :start_time, data: { behavior: "flatpickr" } %>
+      </div>
+    </div>
   </div>
 
   <div class="field">
-    <%= form.label :end_time %>
-    <%= form.text_field :end_time, data: { behavior: "flatpickr" } %>
+    <div class="row">
+      <div class="col-3">
+        <%= form.label :end_time %>
+      </div>
+      <div class="col-3">  
+        <%= form.text_field :end_time, data: { behavior: "flatpickr" } %>
+      </div>
+    </div>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+    <div class="row">
+      <div class="col-3">
+        <%= form.label :description %>
+      </div>
+      <div class="col-9">
+        <%= form.text_area :description %>
+      </div>
+    </div>
   </div>
 
   <div class="field">
-    <%= form.label :contact_name %>
-    <%= form.text_field :contact_name %>
+    <div class="row">
+      <div class="col-3">
+        <%= form.label :contact_name %>
+      </div>
+      <div class="col-9">
+        <%= form.text_field :contact_name %>
+      </div>
+    </div>
   </div>
 
   <div class="field">
-    <%= form.label :contactno %>
-    <%= form.text_field :contactno %>
+    <div class="row">
+      <div class="col-3">
+        <%= form.label :contactno %>
+      </div>
+      <div class="col-9">
+        <%= form.text_field :contactno %>
+      </div>
+    </div>
   </div>
 
   <div class="field">
-    <%= form.label :contact_email %>
-    <%= form.text_field :contact_email %>
+    <div class="row">
+      <div class="col-3">
+        <%= form.label :contact_email %>
+      </div>
+      <div class="col-9">
+        <%= form.text_field :contact_email %>
+      </div>
+    </div>
   </div>
 
   <div class="field">
-    <%= form.label :constraint %>
-    <%= form.number_field :constraint %>
+    <div class="row">
+      <div class="col-3">
+        <%= form.label :constraint %>
+      </div>
+      <div class="col-9">
+        <%= form.number_field :constraint %>
+      </div>
+    </div>
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+</div>
+</section>
