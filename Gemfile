@@ -28,7 +28,10 @@ gem 'rails_admin', git: 'https://github.com/sferik/rails_admin.git'
 gem 'cancancan'
 # Provides a better error page for Rails and other Rack apps
 gem 'better_errors', '~> 2.6'
+<<<<<<< HEAD
+=======
 
+>>>>>>> 9042e784635a447287590ee089613d434860be14
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

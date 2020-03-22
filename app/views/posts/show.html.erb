@@ -1,3 +1,4 @@
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -7,60 +8,64 @@
   <% end %>
 </p>
 
-<p>
-  <strong>Service type:</strong>
-  <%= @post.service_type %>
-</p>
+<section class="post">
+  <div class="container">
+    <div class="row">
+      <div class="col-9"><p><strong>Action</strong></p></div>
+      <div class="col-3"><p>
+      <%= link_to 'Edit', edit_post_path(@post) %> |
+      <%= link_to 'Back', posts_path %>
+      </p></div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-3"><p><strong>Service type:</strong></p></div>
+      <div class="col-9"><p><%= @post.service_type %></p></div>
+    </div>
+    <div class="row">
+      <div class="col-3"><p><strong>Address:</strong></p></div>
+      <div class="col-9"><p><%= @post.address %></p></div>
+    </div>
+    <div class="row">
+      <div class="col-3"><p><strong>Fee:</strong></p></div>
+      <div class="col-9"><p><%= @post.fee %></p></div>
+    </div>
+    <div class="row">
+      <div class="col-3"><p><strong>Start time:</strong></p></div>
+      <div class="col-9"><p><%= @post.start_time %></p></div>
+    </div>
+    <div class="row">
+      <div class="col-3"><p><strong>End time:</strong></p></div>
+      <div class="col-9"><p><%= @post.end_time %></p></div>
+    </div>
+    <div class="row">
+      <div class="col-3"><p><strong>Description:</strong></p></div>
+      <div class="col-9"><p><%= @post.description %></p></div>
+    </div>
+    <div class="row">
+      <div class="col-3"><p><strong>Contact name:</strong></p></div>
+      <div class="col-9"><p><%= @post.contact_name %></p></div>
+    </div>
+    <div class="row">
+      <div class="col-3"><p><strong>Contactno:</strong></p></div>
+      <div class="col-9"><p><%= @post.contactno %></p></div>
+    </div>
+    <div class="row">
+      <div class="col-3"><p><strong>Contact email:</strong></p></div>
+      <div class="col-9"><p><%= @post.contact_email %></p></div>
+    </div>
+    <div class="row">
+      <div class="col-3"><p><strong>Constraint:</strong></p></div>
+      <div class="col-9"><p><%= @post.constraint %></p></div>
+    </div>
+  </div>
+</section>
 
-<p>
-  <strong>Spot name:</strong>
-  <%= @post.spot_name %>
-</p>
+<br>
+<section class="comments">
+  <div class="container">
+    
+  </div>
+</section>
 
-<p>
-  <strong>Address:</strong>
-  <%= @post.address %>
-</p>
 
-<p>
-  <strong>Fee:</strong>
-  <%= @post.fee %>
-</p>
-
-<p>
-  <strong>Start time:</strong>
-  <%= @post.start_time %>
-</p>
-
-<p>
-  <strong>End time:</strong>
-  <%= @post.end_time %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @post.description %>
-</p>
-
-<p>
-  <strong>Contact name:</strong>
-  <%= @post.contact_name %>
-</p>
-
-<p>
-  <strong>Contactno:</strong>
-  <%= @post.contactno %>
-</p>
-
-<p>
-  <strong>Contact email:</strong>
-  <%= @post.contact_email %>
-</p>
-
-<p>
-  <strong>Constraint:</strong>
-  <%= @post.constraint %>
-</p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
