@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'static_pages/home'
   get 'static_pages/requests'

@@ -67,7 +67,7 @@
       <div class="col-3">
         <%= form.label :start_time %>
       </div>
-      <div class="col-3">  
+      <div class="col-4">  
         <%= form.text_field :start_time, data: { behavior: "flatpickr" } %>
       </div>
     </div>
@@ -78,7 +78,7 @@
       <div class="col-3">
         <%= form.label :end_time %>
       </div>
-      <div class="col-3">  
+      <div class="col-4">  
         <%= form.text_field :end_time, data: { behavior: "flatpickr" } %>
       </div>
     </div>
@@ -90,7 +90,10 @@
         <%= form.label :description %>
       </div>
       <div class="col-9">
-        <%= form.text_area :description %>
+        <%#= form.text_area :description %>
+        <div class="form-group">
+          <textarea class="form-control" rows="5" id="comment"></textarea>
+        </div>
       </div>
     </div>
   </div>
