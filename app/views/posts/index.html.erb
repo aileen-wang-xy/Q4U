@@ -2,7 +2,11 @@
 
 <h1>Posts</h1>
 
-<%= link_to 'Create My Post', new_post_path %>
+<% if user_signed_in? %>
+  <%= link_to 'Create My Post', new_post_path %>
+<% else %>
+  <%= link_to 'Create My Post', new_user_session_path%>
+<% end %>
 <hr>
 
 <section class="section">
