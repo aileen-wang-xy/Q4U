@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_25_161641) do
+ActiveRecord::Schema.define(version: 2020_03_26_103721) do
 
   create_table "comments", force: :cascade do |t|
     t.string "name"
@@ -19,6 +19,19 @@ ActiveRecord::Schema.define(version: 2020_03_25_161641) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "post_id"
     t.integer "user_id"
+  end
+
+  create_table "deals", force: :cascade do |t|
+    t.integer "creator_id", null: false
+    t.integer "collector_id", null: false
+    t.integer "post_id", null: false
+    t.boolean "creator_rating", default: false, null: false
+    t.boolean "collector_rating", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["collector_id"], name: "index_deals_on_collector_id"
+    t.index ["creator_id"], name: "index_deals_on_creator_id"
+    t.index ["post_id"], name: "index_deals_on_post_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -54,5 +67,6 @@ ActiveRecord::Schema.define(version: 2020_03_25_161641) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "deals", "posts"
   add_foreign_key "posts", "users"
 end
