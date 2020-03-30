@@ -18,7 +18,6 @@ class DealsController < ApplicationController
     @deal.save
     # when someone collects the post, the status of is_collected becomes true
     @post.update_attribute(:is_collected, true)
-    # @deal = @post.comments.create(params[:deal].permit(:creator, :collector, :creator_rating, :collector_rating, :post_id))
     # redirect_to action: 'show', id: @deal.id
     redirect_to :action => :show, id: @deal.id
   end

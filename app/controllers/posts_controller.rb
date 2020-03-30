@@ -66,16 +66,6 @@ class PostsController < ApplicationController
     end
   end
 
-  # def createDeal
-  #   @collector = User.find(current_user.id)
-  #   @creator = User.find(@post.user_id)
-  #   @creator_rating = false
-  #   @collector_rating = false
-  #   @deal = @collector.deals.build(:creator=>creator, :collector=>collector, :post=>@post.id)
-
-  #   @deal.save
-  # end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post

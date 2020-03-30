@@ -1,4 +1,4 @@
-<h1>MY COLLECTION HISTORY</h1>
+<br><h1>MY COLLECTION HISTORY</h1><br>
 
 <section class="section">
   <div class="container">
@@ -23,7 +23,8 @@
         <% if deal.collector_rating %>
         reviewed
         <%else%>
-        <%= link_to 'write a review', "#" , :class => 'btn btn-outline-dark' %>
+        <%= deal.id %>
+        <%= link_to 'write a review', add_reviews_path(deal.id) , :class => 'btn btn-outline-dark' %>
         <% end %>
         </td>
 
@@ -34,27 +35,6 @@
     <% end %>
 
     </table>
-
-
-
-
-
-
-
-
-    
-    
-    
-
-
-
-
-
-
-
-
-
-
 
   </div>
 </section>

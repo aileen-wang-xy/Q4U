@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_30_113423) do
+ActiveRecord::Schema.define(version: 2020_03_30_171758) do
 
   create_table "comments", force: :cascade do |t|
     t.string "name"
@@ -53,6 +53,19 @@ ActiveRecord::Schema.define(version: 2020_03_30_113423) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.integer "reviewer_id"
+    t.integer "be_reviewed_id"
+    t.integer "deal_id"
+    t.integer "rating", null: false
+    t.text "comment"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["be_reviewed_id"], name: "index_reviews_on_be_reviewed_id"
+    t.index ["deal_id"], name: "index_reviews_on_deal_id"
+    t.index ["reviewer_id"], name: "index_reviews_on_reviewer_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -70,4 +83,5 @@ ActiveRecord::Schema.define(version: 2020_03_30_113423) do
 
   add_foreign_key "deals", "posts"
   add_foreign_key "posts", "users"
+  add_foreign_key "reviews", "deals"
 end

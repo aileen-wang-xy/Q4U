@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Reviewer:</strong>
+  <%= @review.reviewer_id %>
+</p>
+
+<p>
+  <strong>Be reviewed:</strong>
+  <%= @review.be_reviewed_id %>
+</p>
+
+<p>
+  <strong>Deal:</strong>
+  <%= @review.deal_id %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @review.rating %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @review.comment %>
+</p>
+
+<%= link_to 'Edit', edit_review_path(@review) %> |
+<%= link_to 'Back', reviews_path %>

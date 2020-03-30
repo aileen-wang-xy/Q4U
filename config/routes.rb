@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :reviews
   # post '/makeadeal', to: 'posts#createDeal'
   resources :posts do
     resources :comments
@@ -10,7 +11,8 @@ Rails.application.routes.draw do
   get 'static_pages/offers'
   devise_for :users do
     resources :posts
-    resources :deals
+    resources :deals 
+    resources :reviews
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root "static_pages#home"
@@ -18,6 +20,7 @@ Rails.application.routes.draw do
   get 'deals/:id', to: 'deals#show'
   get 'deals', to: 'deals#index'
   get 'posts/:id', to: 'post#show'
-
+  # get 'deals/:deal_id/reviews/reviews', to: 'reviews#new'
+  get '/deal/:deal_id/reviews/new', to: 'reviews#new', as: 'add_reviews'
   
 end
