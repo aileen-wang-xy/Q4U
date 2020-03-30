@@ -1,0 +1,60 @@
+<h1>MY COLLECTION HISTORY</h1>
+
+<section class="section">
+  <div class="container">
+
+    <table class="table table-hover">
+    <thead>
+        <tr>
+        <th scope="col">DATE COLLECTED</th>
+        <th scope="col">CREATOR ID</th>
+        <th scope="col">WRITE A REVIEW</th>
+        <th scope="col">POST</th>
+        </tr>
+    </thead>
+    
+    <% @deals.each do |deal| %>
+    <tbody>
+        <tr>
+        <td><%= deal.created_at.to_date%></td>
+        <td><%= deal.creator_id%></td>
+        
+        <td>
+        <% if deal.collector_rating %>
+        reviewed
+        <%else%>
+        <%= link_to 'write a review', "#" , :class => 'btn btn-outline-dark' %>
+        <% end %>
+        </td>
+
+        <td><%= deal.post_id%>
+        <%= link_to 'view post', post_path(deal.post_id), :class => 'btn btn-outline-dark' %></td>
+        </tr>
+    </tbody>
+    <% end %>
+
+    </table>
+
+
+
+
+
+
+
+
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</section>
