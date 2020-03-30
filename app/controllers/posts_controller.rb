@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :createDeal]
 
   # GET /posts
   # GET /posts.json
@@ -65,6 +65,16 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # def createDeal
+  #   @collector = User.find(current_user.id)
+  #   @creator = User.find(@post.user_id)
+  #   @creator_rating = false
+  #   @collector_rating = false
+  #   @deal = @collector.deals.build(:creator=>creator, :collector=>collector, :post=>@post.id)
+
+  #   @deal.save
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
