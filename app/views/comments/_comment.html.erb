@@ -1,15 +1,15 @@
 <div class="card">
+  <div class="card-header">
+    <p><strong><%= comment.name %></strong>  created: <%= comment.created_at %> </p>
+  </div>
   <article class="card-body">
-
-      <div class="content">
-        <p>
-          <strong><%= comment.name %>:</strong>
-          <%= comment.comment %><br>
-        </p>
-
+    <div class="content">
+      <p>
+        User_id: <%= comment.user_id %><br>
+        <%= comment.comment %><br>
+      </p>
     </div>
     <div class="d-flex justify-content-end">
-      <p> post at: <%= comment.created_at%>   </p>
       <%= link_to 'Delete', [comment.post, comment],
                   method: :delete, class: "button is-danger", data: { confirm: 'Are you sure?' } %>
     </div>

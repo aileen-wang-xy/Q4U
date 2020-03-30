@@ -13,9 +13,16 @@
     <div class="row">
       <div class="col-9"><p><strong>Action</strong></p></div>
       <div class="col-3"><p>
-      <%= link_to 'Collect', posts_path %>
+      <% if @post.is_collected %>
+      Already Made A Deal
+      <% else %> 
+      <%#= link_to 'Collect', deals_path,
+                  class: "btn is-danger", data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Collect', deals_create_path(:id => @post.id),
+                  method: :preview, class: "btn btn-outline-dark", data: { confirm: 'Are you sure?' } %>
+      <% end %>
       <%#= link_to 'Edit', edit_post_path(@post) %> |
-      <%= link_to 'Back', posts_path %>
+      <%= link_to 'Back', posts_path, class: "btn btn-outline-dark" %>
       </p></div>
     </div>
     <hr>
@@ -58,6 +65,10 @@
     <div class="row">
       <div class="col-3"><p><strong>Constraint:</strong></p></div>
       <div class="col-9"><p><%= @post.constraint %></p></div>
+    </div>
+    <div class="row">
+      <div class="col-3"><p><strong>is collected:</strong></p></div>
+      <div class="col-9"><p><%= @post.is_collected %></p></div>
     </div>
   </div>
 </section>

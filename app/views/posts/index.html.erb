@@ -3,9 +3,11 @@
 <h1>Posts</h1>
 
 <% if user_signed_in? %>
-  <%= link_to 'Create My Post', new_post_path %>
+  <a href="/posts/new">Create My Posts</a>
+  <%#= link_to 'Create My Post', new_post_path %>
 <% else %>
-  <%= link_to 'Create My Post', new_user_session_path%>
+  <a href="/users/sign_in">Create My Posts</a>
+  <%#= link_to 'Create My Post', new_user_session_path%>
 <% end %>
 <hr>
 
