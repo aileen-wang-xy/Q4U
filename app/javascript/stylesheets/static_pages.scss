@@ -8,8 +8,8 @@
   
   .homecard {
     margin: 30px auto;
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     border-radius: 40px;
   box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
     cursor: pointer;
@@ -62,55 +62,111 @@
     }
   }
   
-  
-  /*
-  .card {
-    margin: 30px auto;
-    width: 300px;
-    height: 300px;
-    border-radius: 40px;
-    background-image: url('https://i.redd.it/b3esnz5ra34y.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-repeat: no-repeat;
-  box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
-    transition: 0.4s;
-  }
-  */
+/* begin--------------------my account--------------------*/
+h1 {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 30px;
+  font-family: futurabook,helvetica neue,Helvetica,Arial,sans-serif;
+  color: #000;
+  margin: 0 0 20px;
+}
+.pt_account h1, .pt_order h1, .pt_wish-list h1 {
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  display: block;
+  font-size: 2em;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+.account-user_name {
+  font-size: 20px;
+  text-transform: none;
+}
+.content-asset {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 19px;
+  font-family: HelveticaNeueLT,helvetica neue,Helvetica,Arial,sans-serif;
+  color: #000;
+}
+div {
+  display: block;
+}
+body {
+  font-style: normal;
+  font-weight: 400;
+  font-size: inherit;
+  line-height: 20px;
+  font-family: futurabook,helvetica neue,Helvetica,Arial,sans-serif;
+  color: #000;
+  background: #fff;
+  height: 100%;
+  margin: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+}
+.content-asset a:not(.ui-tabs-link) {
+  color: #5a5a5a;
+  text-decoration: none;
+}
+// .account-section ==> personal info | address | div
+.account-section {
+  display: inline-block;
+  vertical-align: top;
+  box-shadow: 0 0 4px #999;
+  margin: 0 35px 30px 0;
+  min-height: 200px;
+  padding: 45px 0;
+  width: 47%;
+}
+// personal info | address | div/block align center
+.account-options {
+  text-align: center;
+}
+// the font of personal info(account.html.erb)
+.account-options-title {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+  font-family: futurabook,helvetica neue,Helvetica,Arial,sans-serif;
+  color: #000;
+  display: block;
+  margin: 10px 0;
+  text-transform: uppercase;
+}
+.content-asset {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 19px;
+  font-family: HelveticaNeueLT,helvetica neue,Helvetica,Arial,sans-serif;
+  color: #000;
+}
+a {
+  background: 0 0;
+}
+a:active, a:hover {
+  outline: 0;
+}
 
-
-//   /* Extra small devices (phones, 600px and down) */
-// @media only screen and (max-width: 600px) {
-//     body{
-//         background-color: red;
-//     }
-// } 
-
-// /* Small devices (portrait tablets and large phones, 600px and up) */
-// @media only screen and (min-width: 600px) {
-//     body{
-//         background-color: yellow;
-//     }
-// } 
-
-// /* Medium devices (landscape tablets, 768px and up) */
-// @media only screen and (min-width: 768px) {
-//     body{
-//         background-color: green;
-//     }
-// } 
-
-// /* Large devices (laptops/desktops, 992px and up) */
-// @media only screen and (min-width: 992px) {
-//     body{
-//         background-color: pink;
-//     }
-// } 
-
-// /* Extra large devices (large laptops and desktops, 1200px and up) */
-// @media only screen and (min-width: 1200px) {
-//     body{
-//         background-color: blue;
-//     }
-// }
+a:-webkit-any-link {
+  // color: -webkit-link;
+  cursor: pointer;
+  // text-decoration: underline;
+}
+/* end--------------------my account--------------------*/

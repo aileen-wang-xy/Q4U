@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_30_171758) do
+ActiveRecord::Schema.define(version: 2020_03_31_101647) do
 
   create_table "comments", force: :cascade do |t|
     t.string "name"
@@ -77,6 +77,9 @@ ActiveRecord::Schema.define(version: 2020_03_30_171758) do
     t.boolean "superadmin_role", default: false
     t.boolean "supervisor_role", default: false
     t.boolean "user_role", default: true
+    t.string "name"
+    t.decimal "rating"
+    t.string "contact_no"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

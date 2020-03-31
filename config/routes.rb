@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'static_pages/home'
-  get 'static_pages/requests'
+  get 'static_pages/account', to: 'static_pages#account', as: 'my_account'
   get 'static_pages/offers'
   devise_for :users do
     resources :posts

@@ -1,3 +1,7 @@
+<section class="section">
+<div class="container" >
+
+<%= javascript_include_tag 'jquery.raty.js', "data-turbolinks-track": false %>
 <%= form_with(model: review, local: true) do |form| %>
   <% if review.errors.any? %>
     <div id="error_explanation">
@@ -27,16 +31,33 @@
   </div>
 
   <div class="field">
-    <%= form.label :rating %>
-    <%= form.number_field :rating %>
+    <div class="row">
+      <div class="col-2">
+        <%= form.label :rating %>
+      </div>
+      <div class="col-8">
+        <%= form.select(:rating, options_for_select([['★','1'],['★★','2'],['★★★','3'],['★★★★','4'],['★★★★★','5']]))%>
+      </div>
+    </div>
   </div>
 
   <div class="field">
-    <%= form.label :comment %>
-    <%= form.text_area :comment %>
+    <div class="row">
+      <div class="col-2">
+        <%= form.label :comment %>
+      </div>
+      <div class="col-8">
+        <div class="form-group">
+          <%= form.text_area :comment , class:'form-control', :rows => 5 %>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+
+</div>
+</section>
