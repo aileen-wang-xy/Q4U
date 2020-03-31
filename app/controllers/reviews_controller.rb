@@ -11,6 +11,7 @@ class ReviewsController < ApplicationController
   # GET /reviews/1
   # GET /reviews/1.json
   def show
+    @be_reviewed = User.find(@review.be_reviewed_id)
   end
 
   # GET /reviews/new
@@ -29,13 +30,14 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @review = Review.new(review_params)
-    # @review.deal_id = :id
     @deal = Deal.find(session[:review_deal_id])
     @review.deal_id = @deal.id
     @review.be_reviewed_id = @deal.creator_id
     @review.reviewer_id = current_user.id
     respond_to do |format|
       if @review.save
+        # update the rating status to make sure each user in a deal can review only once
+        @deal.update_attribute(:collector_rating, true)
         format.html { redirect_to @review, notice: 'Review was successfully created.' }
         format.json { render :show, status: :created, location: @review }
       else

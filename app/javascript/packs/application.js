@@ -27,3 +27,4 @@ document.addEventListener("turbolinks:load", () => {
 
 import './bootstrap_custom.js'
 import './flatpickr.js'
+import './rating_star.js'

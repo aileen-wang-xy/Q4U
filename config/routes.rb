@@ -21,6 +21,6 @@ Rails.application.routes.draw do
   get 'deals', to: 'deals#index'
   get 'posts/:id', to: 'post#show'
   # get 'deals/:deal_id/reviews/reviews', to: 'reviews#new'
-  get '/deal/:deal_id/reviews/new', to: 'reviews#new', as: 'add_reviews'
-  
+  get '/deals/:deal_id/reviews/new', to: 'reviews#new', as: 'add_reviews'
+
 end
