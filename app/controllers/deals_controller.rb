@@ -8,6 +8,8 @@ class DealsController < ApplicationController
 
   def show
     @deal = Deal.find(params[:id])
+    @creator = User.find(@deal.creator_id)
+    @collector = User.find(@deal.collector_id)
   end
 
   def create

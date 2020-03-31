@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2020_03_31_101647) do
     t.boolean "supervisor_role", default: false
     t.boolean "user_role", default: true
     t.string "name"
-    t.decimal "rating"
+    t.decimal "rating", default: "0.0"
     t.string "contact_no"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
