@@ -18,9 +18,10 @@ Rails.application.routes.draw do
   root "static_pages#home"
   post 'deals/create', to: 'deals#create'
   get 'deals/:id', to: 'deals#show'
-  get 'deals', to: 'deals#index'
+  get 'deals', to: 'deals#index', as: 'deals'
   get 'posts/:id', to: 'post#show'
   # get 'deals/:deal_id/reviews/reviews', to: 'reviews#new'
   get '/deals/:deal_id/reviews/new', to: 'reviews#new', as: 'add_reviews'
+  get 'users/:user_id/posts', to: 'posts#myposts', as: 'myposts'
 
 end

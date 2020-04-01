@@ -1,11 +1,13 @@
 class DealsController < ApplicationController
   before_action :authenticate_user!
 
+  # current user's all deals
   def index
     @deals = Deal.where(collector_id: current_user.id).order("created_at DESC")
     @posts = Post.all
+    @users = User.all
   end
-
+  
   def show
     @deal = Deal.find(params[:id])
     @creator = User.find(@deal.creator_id)

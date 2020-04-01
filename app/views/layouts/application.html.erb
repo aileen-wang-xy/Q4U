@@ -33,7 +33,7 @@
       
       <% else %>
         
-        <li><h5>Hi <%= current_user.name %></h5></li>
+        <li><h5>Hi <%= current_user.name.capitalize() %></h5></li>
         <li><%= link_to 'My Account', my_account_path, :class => 'btn btn-outline-dark'%></li>
         <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete , :class => 'btn btn-outline-dark'%></li>
       

@@ -4,14 +4,16 @@ class ReviewsController < ApplicationController
 
   # GET /reviews
   # GET /reviews.json
+  # all reviews of current user
   def index
-    @reviews = Review.all.order("created_at DESC")
+    @reviews = Review.where(be_reviewed_id: current_user.id).order("created_at DESC")
   end
 
   # GET /reviews/1
   # GET /reviews/1.json
   def show
-    @be_reviewed = User.find(@review.be_reviewed_id)
+    @reviewer = User.find(@review.reviewer_id)
+    @be_reviewed_user = User.find(@review.be_reviewed_id)
   end
 
   # GET /reviews/new
@@ -34,10 +36,17 @@ class ReviewsController < ApplicationController
     @review.deal_id = @deal.id
     @review.be_reviewed_id = @deal.creator_id
     @review.reviewer_id = current_user.id
+
     respond_to do |format|
       if @review.save
         # update the rating status to make sure each user in a deal can review only once
         @deal.update_attribute(:collector_rating, true)
+        # update the credit of the user be reviewed
+        @be_reviewed_user_reviews = Review.where(be_reviewed_id: @review.be_reviewed_id)
+        @avg_rating = @be_reviewed_user_reviews.average(:rating).round(1)
+        @be_reviewed_user = User.find(@review.be_reviewed_id)
+        @be_reviewed_user.update_attribute(:rating, @avg_rating)
+        redirect_to deals_path
         format.html { redirect_to @review, notice: 'Review was successfully created.' }
         format.json { render :show, status: :created, location: @review }
       else

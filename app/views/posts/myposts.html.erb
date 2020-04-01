@@ -1,17 +1,9 @@
-<p id="notice"><%= notice %></p>
+<br><h1> MY POSTS </h1>
+<%= link_to "Back", :back %><br><br>
+<h5><strong><%= @posts.length %></strong> posts </h5><br>
 
-<h1>Posts</h1>
-
-<% if user_signed_in? %>
-  <a href="/posts/new">Create My Posts </a>
-  <%#= link_to 'Create My Post', new_post_path %>
-<% else %>
-  <a href="/users/sign_in">Create My Posts</a>
-  <%#= link_to 'Create My Post', new_user_session_path%>
-<% end %>
-<hr>
-    
 <% @posts.each do |post| %>
+
 <section class="section">
   <div class="container">
       
@@ -23,11 +15,10 @@
           <footer class="blockquote-footer">Post Id: <cite title="Source Title"><%= post.id %></cite></footer>
           <%= link_to "Delete", post_path(post), method: :delete, data: { confirm: 'Are you certain you want to delete this?'} %>
         </div>
-        <br>
       </div>
-      
+
   </div>
 </section>
 <br>
-<% end %>
 
+<% end %>

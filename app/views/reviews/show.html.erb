@@ -2,18 +2,18 @@
 
 
 <p>
-  <strong>be Reviewed user:</strong>
-  <%= @be_reviewed.email %>
+  <strong>Review:</strong>
+  <%= @be_reviewed_user.name %>
 </p>
 
 <p>
-  <strong>Be reviewed:</strong>
-  <%= @review.be_reviewed_id %>
+  <strong>By:</strong>
+  <%= @reviewer.name %>
 </p>
 
 <p>
-  <strong>Deal:</strong>
-  <%= @review.deal_id %>
+  <%# <strong>Deal:</strong> %>
+  <%#= @review.deal_id %>
 </p>
 
 <p>
@@ -26,5 +26,5 @@
   <%= @review.comment %>
 </p>
 
-<%= link_to 'Edit', edit_review_path(@review) %> |
-<%= link_to 'Back', reviews_path %>
+<%#= link_to 'Edit', edit_review_path(@review) %> 
+<%= link_to 'Back', deals_path %>

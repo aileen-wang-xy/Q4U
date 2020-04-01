@@ -7,7 +7,7 @@
     <thead>
         <tr>
         <th scope="col">DATE COLLECTED</th>
-        <th scope="col">CREATOR ID</th>
+        <th scope="col">CREATOR NAME</th>
         <th scope="col">WRITE A REVIEW</th>
         <th scope="col">POST</th>
         </tr>
@@ -15,23 +15,26 @@
     
     <% @deals.each do |deal| %>
     <tbody>
-        <tr>
-        <td><%= deal.created_at.to_date%></td>
-        
-        <td><%= deal.creator_id%></td>
+      <tr>
+
+        <td><%= deal.created_at.to_s(:db) %></td>
+
+        <% user = @users.find(deal.creator_id) %>
+        <td><%= user.name.capitalize() %></td>
         
         <td>
-        <% if deal.collector_rating %>
-        reviewed
-        <%else%>
-        <%= deal.id %>
-        <%= link_to 'write a review', add_reviews_path(deal.id) , :class => 'btn btn-outline-dark' %>
-        <% end %>
+          <% if deal.collector_rating %>
+            reviewed
+          <%else%>
+            <%= link_to 'write a review', add_reviews_path(deal.id) , :class => 'btn btn-outline-dark' %>
+          <% end %>
         </td>
 
-        <td><%= deal.post_id%>
-        <%= link_to 'view post', post_path(deal.post_id), :class => 'btn btn-outline-dark' %></td>
-        </tr>
+        <td>
+          <%= link_to 'view post', post_path(deal.post_id), :class => 'btn btn-outline-dark' %>
+        </td>
+
+      </tr>
     </tbody>
     <% end %>
 

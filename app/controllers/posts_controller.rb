@@ -12,6 +12,11 @@ class PostsController < ApplicationController
   def show
   end
 
+  # GET usrs/:current_user.id/posts
+  def myposts
+    @posts = Post.where(user_id: current_user.id).order("created_at DESC")
+  end
+
   # GET /posts/new
   def new
     @post = Post.new
