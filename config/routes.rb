@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
+  get 'users/show'
   resources :reviews
+  resources :users
   # post '/makeadeal', to: 'posts#createDeal'
   resources :posts do
     resources :comments
@@ -23,5 +25,6 @@ Rails.application.routes.draw do
   # get 'deals/:deal_id/reviews/reviews', to: 'reviews#new'
   get '/deals/:deal_id/reviews/new', to: 'reviews#new', as: 'add_reviews'
   get 'users/:user_id/posts', to: 'posts#myposts', as: 'myposts'
+
 
 end
