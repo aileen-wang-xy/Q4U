@@ -1,20 +1,20 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Posts</h1>
-
-<% if user_signed_in? %>
-  <a href="/posts/new">Create My Posts </a>
-  <%#= link_to 'Create My Post', new_post_path %>
-<% else %>
-  <a href="/users/sign_in">Create My Posts</a>
-  <%#= link_to 'Create My Post', new_user_session_path%>
-<% end %>
-<hr>
-    
-<% @posts.each do |post| %>
 <section class="section">
   <div class="container">
-      
+    
+    <h1>Posts</h1>
+
+    <% if user_signed_in? %>
+      <a href="/posts/new">Create My Posts </a>
+      <%#= link_to 'Create My Post', new_post_path %>
+    <% else %>
+      <a href="/users/sign_in">Create My Posts</a>
+      <%#= link_to 'Create My Post', new_user_session_path%>
+    <% end %>
+    <hr>
+        
+    <% @posts.each do |post| %>
+
       <div class="card" >
         <div class="card-body">
           <h5 class="card-title"><%= link_to post.service_type, post %></h5>
@@ -26,8 +26,8 @@
         <br>
       </div>
       
+    <br>
+    <% end %>
+
   </div>
 </section>
-<br>
-<% end %>
-

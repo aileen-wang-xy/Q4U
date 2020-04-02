@@ -1,50 +1,50 @@
+<br>
 
 <p id="notice"><%= notice %></p>
-
-<p>
-  <%# if current_user.superadmin_role? %>
-  <strong>User:</strong>
-  <%= @post.user_id %>
-  <%# end %>
-</p>
 
 <section class="post">
   <div class="container">
     <div class="row">
-      <div class="col-9"><p><strong>Action</strong></p></div>
-      <div class="col-3"><p>
-      <% if @post.is_collected %>
-      Already Made A Deal
-      <% else %> 
-      <%#= link_to 'Collect', deals_path,
-                  class: "btn is-danger", data: { confirm: 'Are you sure?' } %>
-      <%= link_to 'Collect', deals_create_path(:id => @post.id),
-                  method: :preview, class: "btn btn-outline-dark", data: { confirm: 'Are you sure?' } %>
-      <% end %>
-      <%#= link_to 'Edit', edit_post_path(@post) %> |
-      <%= link_to 'Back', posts_path, class: "btn btn-outline-dark" %>
+
+      <div class="col-2", vertical-align='middle'><h2><strong>
+        <%= @post.service_type.upcase %>| </strong></h2>
+      </div>
+
+      <div class="col-2", vertical-align='middle'>
+        <% if @post.is_collected %>
+          DEALED
+        <% else %>
+          WAITING
+        <% end %>
+      </div>
+
+      <div class="col-8", align="right"><p>
+        <% if !@post.is_collected %>
+          <%= link_to 'Collect', deals_create_path(:id => @post.id),
+                    method: :preview, class: "btn btn-outline-dark", data: { confirm: 'Are you sure?' } %> |
+        <% end %>
+        <%#= link_to 'Edit', edit_post_path(@post) %> 
+        <%= link_to 'Back', posts_path, class: "btn btn-outline-dark" %>
       </p></div>
+
     </div>
     <hr>
+
     <div class="row">
-      <div class="col-3"><p><strong>Service type:</strong></p></div>
-      <div class="col-9"><p><%= @post.service_type %></p></div>
-    </div>
-    <div class="row">
-      <div class="col-3"><p><strong>Address:</strong></p></div>
+      <div class="col-3"><p><strong>Spot Address:</strong></p></div>
       <div class="col-9"><p><%= @post.address %></p></div>
     </div>
     <div class="row">
-      <div class="col-3"><p><strong>Fee:</strong></p></div>
+      <div class="col-3"><p><strong>Bonus:</strong></p></div>
       <div class="col-9"><p><%= @post.fee %></p></div>
     </div>
     <div class="row">
       <div class="col-3"><p><strong>Start time:</strong></p></div>
-      <div class="col-9"><p><%= @post.start_time %></p></div>
+      <div class="col-9"><p><%= @post.start_time.to_s(:db) %></p></div>
     </div>
     <div class="row">
       <div class="col-3"><p><strong>End time:</strong></p></div>
-      <div class="col-9"><p><%= @post.end_time %></p></div>
+      <div class="col-9"><p><%= @post.end_time.to_s(:db) %></p></div>
     </div>
     <div class="row">
       <div class="col-3"><p><strong>Description:</strong></p></div>
@@ -52,7 +52,7 @@
     </div>
     <div class="row">
       <div class="col-3"><p><strong>Contact name:</strong></p></div>
-      <div class="col-9"><p><%= @post.contact_name %></p></div>
+      <div class="col-9"><p><%= @post.contact_name.capitalize() %></p></div>
     </div>
     <div class="row">
       <div class="col-3"><p><strong>Contactno:</strong></p></div>
@@ -63,13 +63,10 @@
       <div class="col-9"><p><%= @post.contact_email %></p></div>
     </div>
     <div class="row">
-      <div class="col-3"><p><strong>Constraint:</strong></p></div>
+      <div class="col-3"><p><strong>Credit Constraint:</strong></p></div>
       <div class="col-9"><p><%= @post.constraint %></p></div>
     </div>
-    <div class="row">
-      <div class="col-3"><p><strong>is collected:</strong></p></div>
-      <div class="col-9"><p><%= @post.is_collected %></p></div>
-    </div>
+
   </div>
 </section>
 

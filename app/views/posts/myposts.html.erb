@@ -1,12 +1,26 @@
-<br><h1> MY POSTS </h1>
-<%= link_to "Back", :back %><br><br>
-<h5><strong><%= @posts.length %></strong> posts </h5><br>
-
-<% @posts.each do |post| %>
-
+<br>
 <section class="section">
   <div class="container">
-      
+    
+    <div class="row">
+      <div class="col-3", vertical-align='middle'>
+        <h1>MY POSTS</h1>
+      </div>
+
+      <div class="col-9", align="right", vertical-align='middle'>
+        <%= link_to "Back", my_account_path , class: "btn btn-outline-dark" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-3", vertical-align='middle'>
+        <h5><strong><%= @posts.length %></strong> posts </h5><br>
+      </div>
+    </div>
+    <hr>
+
+    <% @posts.each do |post| %>
+
       <div class="card" >
         <div class="card-body">
           <h5 class="card-title"><%= link_to post.service_type, post %></h5>
@@ -16,10 +30,9 @@
           <%= link_to "Delete", post_path(post), method: :delete, data: { confirm: 'Are you certain you want to delete this?'} %>
         </div>
       </div>
+      <br>
+
+    <% end %>
 
   </div>
 </section>
-<br>
-
-<% end %>
-<%= link_to 'Back', :back %> 

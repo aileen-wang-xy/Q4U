@@ -23,8 +23,11 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 
 
+# Flexible authentication solution for Rails with Warden
 gem 'devise'
-gem 'rails_admin', git: 'https://github.com/sferik/rails_admin.git'
+# RailsAdmin is a Rails engine that provides an easy-to-use interface for managing your data.
+# gem 'rails_admin', git: 'https://github.com/sferik/rails_admin.git'
+gem 'rails_admin', '~> 2.0', '>= 2.0.2'
 gem 'cancancan'
 # Provides a better error page for Rails and other Rack apps
 gem 'better_errors', '~> 2.6'

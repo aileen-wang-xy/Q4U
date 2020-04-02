@@ -12,6 +12,6 @@ class ApplicationController < ActionController::Base
               devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:name, :contact_no, :email, :password, :current_password, :rating)}
          end
 
-
+     add_flash_types :success, :info, :warning, :error
 
 end
