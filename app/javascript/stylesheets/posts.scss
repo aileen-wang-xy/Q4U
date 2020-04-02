@@ -1,29 +1,6 @@
-.cards-list {
-    z-index: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-  }
-  
-  
-  // .card .card_image {
-  //   width: inherit;
-  //   height: inherit;
-  //   border-radius: 40px;
-
-  // }
-  
-  // .card .card_image img {
-  //   width: inherit;
-  //   height: inherit;
-  //   border-radius: 40px;
-  //   object-fit: cover;
-    
-  // }
-  
   .card .card_title {
     text-align: center;
+    vertical-align: middle;
     border-radius: 0px 0px 40px 40px;
     font-family: sans-serif;
     font-weight: bold;
