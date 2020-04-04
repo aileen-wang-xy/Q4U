@@ -46,7 +46,7 @@ class ReviewsController < ApplicationController
         @avg_rating = @be_reviewed_user_reviews.average(:rating).round(1)
         @be_reviewed_user = User.find(@review.be_reviewed_id)
         @be_reviewed_user.update_attribute(:rating, @avg_rating)
-        redirect_to deals_path
+        # redirect_to deals_path
         format.html { redirect_to @review, notice: 'Review was successfully created.' }
         format.json { render :show, status: :created, location: @review }
       else

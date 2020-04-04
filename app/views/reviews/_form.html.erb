@@ -35,9 +35,12 @@
       <div class="col-2">
         <%= form.label :rating %>
       </div>
-      <div class="col-8">
-        <%= form.select(:rating, options_for_select([['★','1'],['★★','2'],['★★★','3'],['★★★★','4'],['★★★★★','5']]))%>
+      <div class="field">
+        <div id="star-rating"></div>
       </div>
+      <%# <div class="col-8">
+        <%= form.select(:rating, options_for_select([['★','1'],['★★','2'],['★★★','3'],['★★★★','4'],['★★★★★','5']]))%>
+      <%# </div> %>
     </div>
   </div>
 
@@ -61,3 +64,11 @@
 
 </div>
 </section>
+
+<script>
+
+  $('#star-rating').raty({
+	    path: '/assets/',
+	    scoreName: 'review[rating]'
+	  });
+</script>

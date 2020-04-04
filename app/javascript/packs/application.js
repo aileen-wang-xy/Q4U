@@ -28,5 +28,8 @@ document.addEventListener("turbolinks:load", () => {
 
 import './bootstrap_custom.js'
 import './flatpickr.js'
-// import './jquery.raty.js'
-import '../../assets/javascripts/jquery.raty.js'
+import './jquery.raty.js'
+// import "javascripts/jquery.raty.js"
+import starhalf from 'images/star-half.png';
+import staroff from 'images/star-off.png';
+import staron from 'images/star-on.png';
