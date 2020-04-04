@@ -11,7 +11,10 @@ Rails.application.routes.draw do
   get 'static_pages/home'
   get 'static_pages/account', to: 'static_pages#account', as: 'my_account'
   get '/search', to: 'posts#search', as: 'search'
-  devise_for :users do
+
+  # devise_for :users, path: 's'
+
+  devise_for :users, path: 'user' do
     resources :posts
     resources :deals 
     resources :reviews
