@@ -12,6 +12,15 @@ class PostsController < ApplicationController
   def show
   end
 
+  # POST /search
+  def search
+    if params[:search].blank?  
+      redirect_to(root_path, alert: "Empty field!") and return  
+    else  
+  
+    end  
+  end
+
   # GET usrs/:current_user.id/posts
   def myposts
     @posts = Post.where(user_id: current_user.id).order("created_at DESC")

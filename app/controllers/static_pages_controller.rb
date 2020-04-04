@@ -7,6 +7,6 @@ class StaticPagesController < ApplicationController
   def account
   end
 
-  def offers
+  def search
   end
 end

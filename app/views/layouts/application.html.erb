@@ -11,80 +11,90 @@
   </head>
 
   <body>
-  
 
+    <nav class="navbar navbar-expand-lg">
 
-<nav class="navbar navbar-expand-lg  ">
-  <h1 class="navbar-brand">Q 4 U</h1>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+      <h1 class="navbar-brand">Q 4 U</h1>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-  <div class="collapse navbar-collapse" id="navbarColor02">
-    <ul class="navbar-nav mr-auto"></ul>
+      <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav mr-auto"></ul>
 
-    <% if user_signed_in? %>
-      
-      <% if current_user.superadmin_role? %>
-        
-        <li><h5>Hi admin</h5></li>
-        <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete , class: 'btn btn-secondary my-2 my-sm-0 m-2'%></li>
-        <li><%= link_to 'dashboard', rails_admin_path, class: 'btn btn-secondary my-2 my-sm-0'%></li>
-      
-      <% else %>
-        
-        <li><h5>Hi <%= current_user.name.capitalize() %></h5></li>
-        <li><%= link_to 'My Account', my_account_path, :class => 'btn btn-outline-dark'%></li>
-        <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete , :class => 'btn btn-outline-dark'%></li>
-      
-      <% end %>
-
-    <% else %>
-
-      <%= link_to new_user_registration_path, class: 'btn btn-secondary my-2 my-sm-0' do %>Sign up<% end %>
-      <%= link_to new_user_session_path, class: 'btn btn-secondary my-2 my-sm-0' do  %>Login<% end %>
-
-    <% end %>
-
-  </div>
-</nav>
-
-
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarColor02">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/posts">Posts</a>
-      </li>
-      <li class="nav-item">
         <% if user_signed_in? %>
-        <a class="nav-link" href="/posts/new">Create My Posts</a>
+          
+          <% if current_user.superadmin_role? %>
+            
+            <li><h5>Hi admin</h5></li>
+            <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete , class: 'btn btn-secondary my-2 my-sm-0 m-2'%></li>
+            <li><%= link_to 'dashboard', rails_admin_path, class: 'btn btn-secondary my-2 my-sm-0'%></li>
+          
+          <% else %>
+            
+            <li><h5>Hi <%= current_user.name.capitalize() %></h5></li>
+            <li><%= link_to 'My Account', my_account_path, :class => 'btn btn-outline-dark'%></li>
+            <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete , :class => 'btn btn-outline-dark'%></li>
+          
+          <% end %>
+
         <% else %>
-        <a class="nav-link" href="/users/sign_in">Create My Posts</a>
+
+          <%= link_to new_user_registration_path, class: 'btn btn-secondary my-2 my-sm-0' do %>Sign up<% end %>
+          <%= link_to new_user_session_path, class: 'btn btn-secondary my-2 my-sm-0' do  %>Login<% end %>
+
         <% end %>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Help</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
+
+      </div>
+
+    </nav>
+
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarColor02">
+      
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/posts">Posts</a>
+          </li>
+
+          <li class="nav-item">
+            <% if user_signed_in? %>
+            <a class="nav-link" href="/posts/new">Create My Posts</a>
+            <% else %>
+            <a class="nav-link" href="/users/sign_in">Create My Posts</a>
+            <% end %>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">Help</a>
+          </li>
+        </ul>
+        
+        <%# <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search">
+          <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        </form> %>
+
+        <form class="form-inline my-2 my-lg-0">
+          <%=render 'layouts/search'%>
+        </form>
+
+      </div>
+    </nav>
 
     <div class ="container">
-     <div  class="danger"> 
+      <div  class="danger"> 
         <% unless flash.empty? %>
         <script type="text/javascript">
         <% flash.each do |f| %>
@@ -95,13 +105,14 @@
         <% end %>
       </div>
     </div>
-    
-  </div>
-      <%= yield %>
-  </div>
+      
 
+    <div class="container" >
+        <%= yield %>
+    </div>
 
   </body>
+
 </html>
 
 
