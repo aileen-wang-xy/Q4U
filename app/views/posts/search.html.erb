@@ -1,6 +1,25 @@
 <h2>You Searched Our Post Catalog For <%= @search_term %></h2>
 
+alert("test")
 <% if @posts.length == 0  %>
 <br />
 <h2>No posts were found to match your search</h2>
 <% end %>
+
+<table class="catalog">
+  <% @posts.each do |post| %>
+      <tr>
+        <td>
+          <div class="image">
+            <%= link_to (image_tag item.image_url, :style => "height:100px"), item %>
+          </div>
+          <div class="title">
+            <%= link_to post.title, item %>
+          </div>
+          <div class="description">
+            <%= post.description %>
+          </div>  
+        </td>
+      </tr>
+    <% end %>
+</table>

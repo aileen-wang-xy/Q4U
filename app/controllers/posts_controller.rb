@@ -4,7 +4,13 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all.order("created_at DESC")
+    if session[:search_query].blank?
+      @posts = Post.all.order("created_at DESC")
+    else
+      st = "%#{session[:search_query]}%"
+      @posts = Post.where("spot_name like ?", st)
+      session.delete(:search_query)
+    end
   end
 
   # GET /posts/1
@@ -14,11 +20,13 @@ class PostsController < ApplicationController
 
   # POST /search
   def search
-    if params[:search].blank?  
-      redirect_to(root_path, alert: "Empty field!") and return  
-    else  
-  
-    end  
+    if params[:search].blank?
+      @posts = Post.all.order("created_at DESC")
+      redirect_to request.referrer
+    else
+      session[:search_query] = params[:search]
+      redirect_to request.referrer
+    end
   end
 
   # GET usrs/:current_user.id/posts
