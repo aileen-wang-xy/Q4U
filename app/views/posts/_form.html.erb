@@ -1,5 +1,4 @@
-<section class="section">
-<div class="container" >
+
 <%= form_with(model: post, local: true) do |form| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
@@ -24,7 +23,8 @@
         <%= form.label :service_type %>
       </div>
       <div class="col-9">
-        <%= form.text_field :service_type %>
+        <%#= form.text_field :service_type %>
+        <%= form.select(:service_type, options_for_select([['request queue service','request'],['provide queue service','provide']]))%>
       </div>
     </div>
   </div>
@@ -146,5 +146,4 @@
     <%= form.submit %>
   </div>
 <% end %>
-</div>
-</section>
+

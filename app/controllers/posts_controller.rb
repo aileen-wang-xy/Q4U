@@ -4,12 +4,34 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all.order("created_at DESC")
+    if session[:search_query].blank?
+      @posts = Post.all.order("created_at DESC")
+    else
+      st = "%#{session[:search_query]}%"
+      @posts = Post.where("spot_name like ?", st)
+      session.delete(:search_query)
+    end
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
+  end
+
+  # POST /search
+  def search
+    if params[:search].blank?
+      @posts = Post.all.order("created_at DESC")
+      redirect_to request.referrer
+    else
+      session[:search_query] = params[:search]
+      redirect_to request.referrer
+    end
+  end
+
+  # GET users/:current_user.id/posts
+  def myposts
+    @posts = Post.where(user_id: current_user.id).order("created_at DESC")
   end
 
   # GET /posts/new
@@ -65,16 +87,6 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-  # def createDeal
-  #   @collector = User.find(current_user.id)
-  #   @creator = User.find(@post.user_id)
-  #   @creator_rating = false
-  #   @collector_rating = false
-  #   @deal = @collector.deals.build(:creator=>creator, :collector=>collector, :post=>@post.id)
-
-  #   @deal.save
-  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

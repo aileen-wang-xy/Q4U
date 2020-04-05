@@ -1,0 +1,49 @@
+<h1>PROFILE</h1>
+
+<div class="container">
+    <%# style.scss .center %>
+    <div class='card center'> 
+
+        <div class="row">
+            <div class='col 2'>
+                <p class='pro'><strong>Name:</strong></p>
+            </div>
+            <div class='col 8'>
+                <p class='pro'><%= @user.name%></p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class='col 2'>
+                <p class='pro'><strong>Credit:</strong></p>
+            </div>
+            <div class='col 8'>
+                <p class='pro'><%= @user.rating%></p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class='col 2'>
+                <p class='pro'><strong>Contact Number:</strong></p>
+            </div>
+            <div class='col 8'>
+                <p class='pro'><%= @user.contact_no%></p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class='col 2'>
+                <p class='pro'><strong>Email:</strong></p>
+            </div>
+            <div class='col 8'>
+                <p class='pro'><%= @user.email%></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class='col 2'>
+                <%= link_to 'Back', :back %> 
+                <%= link_to 'Edit', edit_user_registration_path(:id => @user.id) %>
+            </div>
+        </div>
+    <div>
+</div>

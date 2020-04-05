@@ -1,23 +1,32 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Posts</h1>
-
-<% if user_signed_in? %>
-  <a href="/posts/new">Create My Posts</a>
-  <%#= link_to 'Create My Post', new_post_path %>
-<% else %>
-  <a href="/users/sign_in">Create My Posts</a>
-  <%#= link_to 'Create My Post', new_user_session_path%>
-<% end %>
-<hr>
-
 <section class="section">
   <div class="container">
+
+    <h1>Posts</h1>
+    <div style="float: right">
+      <%= form_tag("/search", :method => "post") do %>
+      <%= label_tag("Search:") %>
+      <%= text_field_tag(:search) %>
+      <%= submit_tag("Search") %>
+      <% end %>
+    </div>
+    <div>
+      <% if user_signed_in? %>
+        <a href="/posts/new">Create My Posts </a>
+        <%#= link_to 'Create My Post', new_post_path %>
+      <% else %>
+        <a href="/user/sign_in">Create My Posts</a>
+        <%#= link_to 'Create My Post', new_user_session_path%>
+      <% end %>
+    </div>
+    <hr>
+
     <% @posts.each do |post| %>
-      
+
       <div class="card" >
         <div class="card-body">
           <h5 class="card-title"><%= link_to post.service_type, post %></h5>
+          <p class="card-text"><%= post.spot_name %></p>
           <h6 class="card-subtitle mb-2 text-muted">Bonus: €<%= post.fee %></h6>
           <p class="card-text"><%= post.description %></p>
           <footer class="blockquote-footer">Post Id: <cite title="Source Title"><%= post.id %></cite></footer>
@@ -26,7 +35,8 @@
         <br>
       </div>
       
+    <br>
     <% end %>
+
   </div>
 </section>
-

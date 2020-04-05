@@ -1,13 +1,28 @@
-<h1>MY COLLECTION HISTORY</h1>
-
+<br>
 <section class="section">
   <div class="container">
+
+    <div class="row">
+      <div class="col-9", vertical-align='middle'>
+        <h1>MY COLLECTION HISTORY </h1>
+      </div>
+
+      <div class="col-3", align="right", vertical-align='middle'>
+        <%= link_to "Back", :back , class: "btn btn-outline-dark" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-3", vertical-align='middle'>
+        <h5><strong><%= @deals.length %></strong> deals </h5><br>
+      </div>
+    </div>
 
     <table class="table table-hover">
     <thead>
         <tr>
         <th scope="col">DATE COLLECTED</th>
-        <th scope="col">CREATOR ID</th>
+        <th scope="col">CREATOR NAME</th>
         <th scope="col">WRITE A REVIEW</th>
         <th scope="col">POST</th>
         </tr>
@@ -15,46 +30,30 @@
     
     <% @deals.each do |deal| %>
     <tbody>
-        <tr>
-        <td><%= deal.created_at.to_date%></td>
-        <td><%= deal.creator_id%></td>
+      <tr>
+
+        <td><%= deal.created_at.to_s(:db) %></td>
+
+        <% user = @users.find(deal.creator_id) %>
+        <td><%= user.name.capitalize() %></td>
         
         <td>
-        <% if deal.collector_rating %>
-        reviewed
-        <%else%>
-        <%= link_to 'write a review', "#" , :class => 'btn btn-outline-dark' %>
-        <% end %>
+          <% if deal.collector_rating %>
+            reviewed
+          <%else%>
+            <%= link_to 'write a review', add_reviews_path(deal.id) , :class => 'btn btn-outline-dark' %>
+          <% end %>
         </td>
 
-        <td><%= deal.post_id%>
-        <%= link_to 'view post', post_path(deal.post_id), :class => 'btn btn-outline-dark' %></td>
-        </tr>
+        <td>
+          <%= link_to 'view post', post_path(deal.post_id), :class => 'btn btn-outline-dark' %>
+        </td>
+
+      </tr>
     </tbody>
     <% end %>
 
     </table>
-
-
-
-
-
-
-
-
     
-    
-    
-
-
-
-
-
-
-
-
-
-
-
   </div>
 </section>

@@ -1,0 +1,7 @@
+<%= form_tag(search_path, :method => "post") do %>
+<%= search_field_tag 'search', params[:search], placeholder: 'Enter search term...', class:'form-control mr-sm-2'  %>
+<%= submit_tag "Search" , class: "btn btn-secondary my-2 my-sm-0"%>
+<% end %>
+
+
+

@@ -10,7 +10,7 @@ gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 4.0'
+gem 'webpacker', '~> 5.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -21,8 +21,11 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 
 
+# Flexible authentication solution for Rails with Warden
 gem 'devise'
-gem 'rails_admin', git: 'https://github.com/sferik/rails_admin.git'
+# RailsAdmin is a Rails engine that provides an easy-to-use interface for managing your data.
+# gem 'rails_admin', git: 'https://github.com/sferik/rails_admin.git'
+gem 'rails_admin', '~> 2.0', '>= 2.0.2'
 gem 'cancancan'
 # Provides a better error page for Rails and other Rack apps
 gem 'better_errors', '~> 2.6'
@@ -32,11 +35,6 @@ gem 'better_errors', '~> 2.6'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
-
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
@@ -49,12 +47,21 @@ group :production do
   gem 'pg'
 end
 
-group :test do
+group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  # great tool for creating test objects in RSpec
+  gem 'factory_bot_rails', '~> 5.1', '>= 5.1.1'
+  # rspec-rails extends Rails' built-in testing framework to support rspec
+  gem 'rspec-rails', '~> 4.0.0'
+  # for debugging
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]	
+  # ensures a clean state for testing
+  gem 'database_cleaner'
+  gem 'rails-controller-testing'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
