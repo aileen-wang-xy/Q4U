@@ -25,9 +25,7 @@
     <div class="card">
       <div class="card-header">
         <div class="row ">
-          <div class="col-1">
-            <p><strong><%= review.rating %></strong></p>
-          </div>
+          <div class="star-rating" data-score= <%= review.rating %> ></div>
           <div class="col-6">
             <% reviewer = User.find(review.reviewer_id) %>
             <p><strong><%= reviewer.name.capitalize() %> </strong>  reviewed: <%= review.created_at.to_s(:db) %> </p>
@@ -50,3 +48,13 @@
 
    </div>
 </section>
+
+	<script>
+	    $('.star-rating').raty({
+	      path: '/assets/',
+	      readOnly: true,
+	      score: function() {
+	            return $(this).attr('data-score');
+	    }
+	  });
+	</script>
