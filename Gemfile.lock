@@ -1,50 +1,3 @@
-GIT
-  remote: https://github.com/rspec/rspec-core.git
-  revision: fa1e2277caa767d25f22f96c0b9026fce0909e8b
-  branch: master
-  specs:
-    rspec-core (3.10.0.pre)
-      rspec-support (= 3.10.0.pre)
-
-GIT
-  remote: https://github.com/rspec/rspec-expectations.git
-  revision: fb97fc0005468ed9cd3284f01a1e6e8cf9a75917
-  branch: master
-  specs:
-    rspec-expectations (3.10.0.pre)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (= 3.10.0.pre)
-
-GIT
-  remote: https://github.com/rspec/rspec-mocks.git
-  revision: 685ad3b67a79e662261c73d3e80746b6497cd6f2
-  branch: master
-  specs:
-    rspec-mocks (3.10.0.pre)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (= 3.10.0.pre)
-
-GIT
-  remote: https://github.com/rspec/rspec-rails.git
-  revision: 357a69ac4ffa87efac93d571e559a7319e5bb0ee
-  branch: master
-  specs:
-    rspec-rails (4.1.0.pre)
-      actionpack (>= 4.2)
-      activesupport (>= 4.2)
-      railties (>= 4.2)
-      rspec-core (= 3.10.0.pre)
-      rspec-expectations (= 3.10.0.pre)
-      rspec-mocks (= 3.10.0.pre)
-      rspec-support (= 3.10.0.pre)
-
-GIT
-  remote: https://github.com/rspec/rspec-support.git
-  revision: 8ba857ee9e74be8898e5089871115e52dac36c32
-  branch: master
-  specs:
-    rspec-support (3.10.0.pre)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -132,6 +85,7 @@ GEM
     coderay (1.1.2)
     concurrent-ruby (1.1.6)
     crass (1.0.6)
+    database_cleaner (1.8.4)
     devise (4.7.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -218,6 +172,10 @@ GEM
       bundler (>= 1.3.0)
       railties (= 6.0.2.2)
       sprockets-rails (>= 2.0.0)
+    rails-controller-testing (1.0.4)
+      actionpack (>= 5.0.1.x)
+      actionview (>= 5.0.1.x)
+      activesupport (>= 5.0.1.x)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -247,6 +205,23 @@ GEM
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
+    rspec-core (3.9.1)
+      rspec-support (~> 3.9.1)
+    rspec-expectations (3.9.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.9.0)
+    rspec-mocks (3.9.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.9.0)
+    rspec-rails (4.0.0)
+      actionpack (>= 4.2)
+      activesupport (>= 4.2)
+      railties (>= 4.2)
+      rspec-core (~> 3.9)
+      rspec-expectations (~> 3.9)
+      rspec-mocks (~> 3.9)
+      rspec-support (~> 3.9)
+    rspec-support (3.9.2)
     rubyzip (2.3.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -311,18 +286,16 @@ DEPENDENCIES
   byebug
   cancancan
   capybara (>= 2.15)
+  database_cleaner
   devise
   factory_bot_rails (~> 5.1, >= 5.1.1)
   jbuilder (~> 2.7)
   pg
   puma (~> 4.1)
   rails (~> 6.0.2, >= 6.0.2.1)
+  rails-controller-testing
   rails_admin (~> 2.0, >= 2.0.2)
-  rspec-core!
-  rspec-expectations!
-  rspec-mocks!
-  rspec-rails!
-  rspec-support!
+  rspec-rails (~> 4.0.0)
   sass-rails (>= 6)
   selenium-webdriver
   sqlite3 (~> 1.4)

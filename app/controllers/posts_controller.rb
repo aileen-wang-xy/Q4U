@@ -29,7 +29,7 @@ class PostsController < ApplicationController
     end
   end
 
-  # GET usrs/:current_user.id/posts
+  # GET users/:current_user.id/posts
   def myposts
     @posts = Post.where(user_id: current_user.id).order("created_at DESC")
   end

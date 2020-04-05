@@ -36,14 +36,6 @@ gem 'better_errors', '~> 2.6'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
-    gem lib, git: "https://github.com/rspec/#{lib}.git", branch: 'master' # Previously '4-0-dev' or '4-0-maintenance' branch
-  end
-end
-
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
@@ -55,7 +47,7 @@ group :production do
   gem 'pg'
 end
 
-group :test do
+group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
@@ -63,6 +55,13 @@ group :test do
   gem 'webdrivers'
   # great tool for creating test objects in RSpec
   gem 'factory_bot_rails', '~> 5.1', '>= 5.1.1'
+  # rspec-rails extends Rails' built-in testing framework to support rspec
+  gem 'rspec-rails', '~> 4.0.0'
+  # for debugging
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]	
+  # ensures a clean state for testing
+  gem 'database_cleaner'
+  gem 'rails-controller-testing'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
