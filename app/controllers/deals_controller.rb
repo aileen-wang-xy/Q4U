@@ -32,8 +32,8 @@ class DealsController < ApplicationController
       # when someone collects the post, the status of is_collected becomes true
       @post.update_attribute(:is_collected, true)
 
-      UserMailer.with(user: @collector).collect_email.deliver_later
-      UserMailer.with(user: @creator).collect_email.deliver_later
+      UserMailer.with(user: @collector).collector_email.deliver_later
+      UserMailer.with(user: @creator).creator_email.deliver_later
       # redirect_to action: 'show', id: @deal.id
       redirect_to :action => :show, id: @deal.id
     end
