@@ -18,7 +18,7 @@
                 <p class='pro'><strong>Credit:</strong></p>
             </div>
             <div class='col 8'>
-                <p class='pro'><%= @user.rating%></p>
+                <div class="star-rating" data-score= <%= current_user.rating %> ></div>
             </div>
         </div>
         
@@ -47,3 +47,13 @@
         </div>
     <div>
 </div>
+
+<script>
+    $('.star-rating').raty({
+        path: '/assets/',
+        readOnly: true,
+        score: function() {
+            return $(this).attr('data-score');
+    }
+    });
+</script>
