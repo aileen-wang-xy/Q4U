@@ -16,8 +16,6 @@ class DealsController < ApplicationController
 
   def create
     @post = Post.find(params[:id])
-    # @collector = current_user.id
-    # @creator = @post.user_id
     @collector = User.find(current_user.id)
     @creator = User.find(@post.user_id)
     if !@post.constraint.nil? && @collector.rating < @post.constraint
@@ -34,7 +32,6 @@ class DealsController < ApplicationController
 
       UserMailer.with(user: @collector).collector_email.deliver_later
       UserMailer.with(user: @creator).creator_email.deliver_later
-      # redirect_to action: 'show', id: @deal.id
       redirect_to :action => :show, id: @deal.id
     end
   end

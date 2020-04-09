@@ -15,9 +15,9 @@
     <nav class="navbar navbar-expand-lg">
 
       <h1 class="navbar-brand">Q 4 U</h1>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      <%# <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-      </button>
+      </button> %>
 
       <div class="collapse navbar-collapse" id="navbarColor02">
         <ul class="navbar-nav mr-auto"></ul>
@@ -52,33 +52,35 @@
 
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#"></a>
+      <%# <a class="navbar-brand" href="#"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-      </button>
+      </button> %>
 
       <div class="collapse navbar-collapse" id="navbarColor02">
       
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            <%# <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a> %>
+            <%= link_to 'Home', '/', class:'nav-link'%>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="/posts">Posts</a>
+            <%# <a class="nav-link" href="/posts">Posts</a> %>
+            <% posts = Post.all.order("created_at DESC")%>
+            <%= link_to 'Posts', posts_path(posts), class:'nav-link' %>
           </li>
 
           <li class="nav-item">
             <% if user_signed_in? %>
-            <a class="nav-link" href="/posts/new">Create My Posts</a>
+              <%# <a class="nav-link" href="/posts/new">Create My Posts</a> %>
+              <%= link_to 'Create My Post', new_post_path, class:'nav-link' %>
             <% else %>
-            <a class="nav-link" href="/user/sign_in">Create My Posts</a>
+              <%# <a class="nav-link" href="/user/sign_in">Create My Posts</a> %>
+              <%= link_to 'Create My Post', new_user_registration_path, class:'nav-link' %>
             <% end %>
           </li>
 
-          <%# <li class="nav-item">
-            <a class="nav-link" href="#">Help</a>
-          </li> %>
         </ul>
         
         <%# <form class="form-inline my-2 my-lg-0">

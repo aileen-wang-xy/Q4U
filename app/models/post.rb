@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_many :comments
+  has_one :deal
 
   validate :start_time_is_valid
   validate :end_time_is_valid
@@ -13,5 +14,6 @@ class Post < ApplicationRecord
     errors.add(:end_time, ': End time should be later than start time') if (start_time.nil? || end_time.nil? || end_time < start_time)
   end
 
-
 end
+
+

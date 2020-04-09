@@ -18,6 +18,8 @@
         </a>
        
         <a class="account-section" title="Check the history list of your posts" href="<%= myposts_path(current_user.id) %>">
+        <%# <% posts = Post.all.where(user_id: current_user.id, is_collected: false).order("created_at DESC")%> 
+        <%# <a class="account-section" title="Check the history list of your posts" href="<%= posts_path(posts) %>
             <img height="40" width="40" src="https://cdn.onlinewebfonts.com/svg/img_275386.png" alt="Posts">
             <span class="account-options-title">
                 My Posts

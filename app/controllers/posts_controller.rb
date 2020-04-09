@@ -31,7 +31,8 @@ class PostsController < ApplicationController
 
   # GET users/:current_user.id/posts
   def myposts
-    @posts = Post.where(user_id: current_user.id).order("created_at DESC")
+    @waiting_posts = Post.where(user_id: current_user.id, is_collected: false).order("created_at DESC")
+    @dealt_posts = Post.where(user_id: current_user.id, is_collected: true).order("created_at DESC")
   end
 
   # GET /posts/new

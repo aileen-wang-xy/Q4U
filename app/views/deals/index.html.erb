@@ -41,7 +41,7 @@
           <% if deal.collector_rating %>
             reviewed
           <%else%>
-            <%= link_to 'write a review', add_reviews_path(deal.id) , :class => 'btn btn-outline-dark' %>
+            <%= link_to 'Review', add_reviews_path(deal.id) , :class => 'btn btn-outline-dark' %>
           <% end %>
         </td>
 

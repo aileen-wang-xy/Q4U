@@ -34,13 +34,21 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @deal = Deal.find(session[:review_deal_id])
     @review.deal_id = @deal.id
-    @review.be_reviewed_id = @deal.creator_id
+    if current_user.id == @deal.creator_id
+      @review.be_reviewed_id = @deal.collector_id
+    else
+      @review.be_reviewed_id = @deal.creator_id
+    end
     @review.reviewer_id = current_user.id
 
     respond_to do |format|
       if @review.save
         # update the rating status to make sure each user in a deal can review only once
-        @deal.update_attribute(:collector_rating, true)
+        if current_user.id == @deal.creator_id
+          @deal.update_attribute(:creator_rating, true)
+        else 
+          @deal.update_attribute(:collector_rating, true)
+        end 
         # update the credit of the user be reviewed
         @be_reviewed_user_reviews = Review.where(be_reviewed_id: @review.be_reviewed_id)
         @avg_rating = @be_reviewed_user_reviews.average(:rating).round(1)
