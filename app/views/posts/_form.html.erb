@@ -12,10 +12,6 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%# <%= form.label :user_id %> 
-    <%# <%= form.text_field :user_id %> 
-  </div>
 
   <div class="field">
     <div class="row">
@@ -23,7 +19,6 @@
         <%= form.label :service_type %>
       </div>
       <div class="col-4">
-        <%#= form.text_field :service_type %>
         <%= form.select(:service_type, options_for_select([['Request Queue Service','request'],['Provide Queue Service','provide']]), {include_blank: "Select One"}, {:class =>'form-control'}) %>
       </div>
     </div>
@@ -56,10 +51,10 @@
   <div class="field">
     <div class="row">
       <div class="col-3">
-        <%= form.label :fee %>
+        <%= form.label :bonus %>
       </div>
       <div class="col-4">  
-        <%= form.number_field :fee, class:'form-control' %>
+        <%= form.number_field :fee, min:0, step:5, class:'form-control' %>
       </div>
     </div>
   </div>
