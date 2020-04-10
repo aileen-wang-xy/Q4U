@@ -22,31 +22,33 @@
       <div class="col-3">
         <%= form.label :service_type %>
       </div>
-      <div class="col-9">
+      <div class="col-4">
         <%#= form.text_field :service_type %>
-        <%= form.select(:service_type, options_for_select([['request queue service','request'],['provide queue service','provide']])) %>
+        <%= form.select(:service_type, options_for_select([['Request Queue Service','request'],['Provide Queue Service','provide']]), {include_blank: "Select One"}, {:class =>'form-control'}) %>
       </div>
     </div>
   </div>
+
 
   <div class="field">
     <div class="row">
       <div class="col-3">
         <%= form.label :spot_name %>
       </div>
-      <div class="col-9">  
-        <%= form.text_field :spot_name %>
+      <div class="col-4">  
+        <%= form.text_field :spot_name , class:'form-control'%>
       </div>
     </div>
   </div>
+
 
   <div class="field">
     <div class="row">
       <div class="col-3">
         <%= form.label :address %>
       </div>
-      <div class="col-9">  
-        <%= form.text_field :address %>
+      <div class="col-4">  
+        <%= form.text_field :address , class:'form-control' %>
       </div>
     </div>
   </div>
@@ -56,8 +58,8 @@
       <div class="col-3">
         <%= form.label :fee %>
       </div>
-      <div class="col-9">  
-        <%= form.number_field :fee %>
+      <div class="col-4">  
+        <%= form.number_field :fee, class:'form-control' %>
       </div>
     </div>
   </div>
@@ -89,10 +91,10 @@
       <div class="col-3">
         <%= form.label :description %>
       </div>
-      <div class="col-9">
+      <div class="col-7">
         <%#= form.text_area :description %>
         <div class="form-group">
-          <%= form.text_area :description , class:'form-control', :rows => 5 %>
+          <%= form.text_area :description , class:'form-control', :rows => 5, placeholder:"Describe your needs. The more detailed, the better." %>
         </div>
       </div>
     </div>
@@ -103,8 +105,8 @@
       <div class="col-3">
         <%= form.label :contact_name %>
       </div>
-      <div class="col-9">
-        <%= form.text_field :contact_name %>
+      <div class="col-4">
+        <%= form.text_field :contact_name, class:'form-control' %>
       </div>
     </div>
   </div>
@@ -114,8 +116,8 @@
       <div class="col-3">
         <%= form.label :contactno %>
       </div>
-      <div class="col-9">
-        <%= form.text_field :contactno %>
+      <div class="col-4">
+        <%= form.text_field :contactno, class:'form-control' %>
       </div>
     </div>
   </div>
@@ -125,8 +127,8 @@
       <div class="col-3">
         <%= form.label :contact_email %>
       </div>
-      <div class="col-9">
-        <%= form.text_field :contact_email %>
+      <div class="col-4">
+        <%= form.text_field :contact_email, class:'form-control' %>
       </div>
     </div>
   </div>
@@ -136,8 +138,10 @@
       <div class="col-3">
         <%= form.label :constraint %>
       </div>
-      <div class="col-9">
-        <%= form.number_field :constraint %>
+      <div class="col-7">
+        <%#= form.number_field :constraint %>
+        <div id="star-rating"></div>
+        <small id="emailHelp" class="form-text text-muted">We'll filter the collector who's credit is less than the constraint.</small>
       </div>
     </div>
   </div>
@@ -146,4 +150,11 @@
     <%= form.submit %>
   </div>
 <% end %>
+
+<script>
+  $('#star-rating').raty({
+	    path: '/assets/',
+	    scoreName: 'review[rating]'
+	  });
+</script>
 
