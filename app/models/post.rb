@@ -3,6 +3,15 @@ class Post < ApplicationRecord
   has_many :comments
   has_one :deal
 
+  validates :service_type, presence: true
+  validates :spot_name, presence: true
+  validates :address, presence: true
+  validates :fee, presence: true
+  validates :description, presence: true
+  validates :contact_name, presence: true
+  validates :contactno, presence: true
+  validates :contact_email, presence: true
+
   validate :start_time_is_valid
   validate :end_time_is_valid
 
