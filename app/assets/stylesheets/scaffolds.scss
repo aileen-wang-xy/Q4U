@@ -1,5 +1,7 @@
+@import 'bootstrap/scss/bootstrap'; 
+
 body {
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   color: #333;
   margin: 33px; }
 
@@ -36,17 +38,27 @@ div.actions {
 #notice {
   color: green; }
 
-.field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table; }
 
-#error_explanation {
-  width: 450px;
-  border: 2px solid red;
-  padding: 7px 7px 0;
-  margin-bottom: 20px;
-  background-color: #f0f0f0; }
+.alert-error{
+  color: #B66A56;
+  @extend .alert;
+  @extend .alert-danger;
+}
+
+#error_explanation{   
+  ul {
+      list-style: none;
+      margin: 0 0 18px 0;
+      color: #B66A56
+  }
+}
+
+.field_with_errors
+{ 
+  input {
+  border: 2px solid #B66A56;
+  }
+}
 
 #error_explanation h2 {
   text-align: left;
@@ -54,7 +66,7 @@ div.actions {
   padding: 5px 5px 5px 15px;
   font-size: 12px;
   margin: -7px -7px 0;
-  background-color: #c00;
+  background-color: #B66A56;
   color: #fff; }
 
 #error_explanation ul li {

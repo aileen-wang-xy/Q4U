@@ -4,7 +4,8 @@
 <%= javascript_include_tag 'jquery.raty.js', "data-turbolinks-track": false %>
 <%= form_with(model: review, local: true) do |form| %>
   <% if review.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation"  class="row">
+    <div class="col-10 alert alert-danger">
       <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
 
       <ul>
@@ -13,22 +14,8 @@
         <% end %>
       </ul>
     </div>
+    </div>
   <% end %>
-
-  <div class="field">
-    <%#= form.label :reviewer_id %>
-    <%#= form.text_field :reviewer_id %>
-  </div>
-
-  <div class="field">
-    <%#= form.label :be_reviewed_id %>
-    <%#= form.text_field :be_reviewed_id %>
-  </div>
-
-  <div class="field">
-    <%#= form.label :deal_id %>
-    <%#= form.text_field :deal_id %>
-  </div>
 
   <div class="field">
     <div class="row">
@@ -38,9 +25,6 @@
       <div class="field">
         <div id="star-rating"></div>
       </div>
-      <%# <div class="col-8">
-        <%= form.select(:rating, options_for_select([['★','1'],['★★','2'],['★★★','3'],['★★★★','4'],['★★★★★','5']]))%>
-      <%# </div> %>
     </div>
   </div>
 
