@@ -7,11 +7,11 @@ class PostsController < ApplicationController
   def index
     if session[:search_query].blank?
       # @posts = Post.all.order("created_at DESC")
-      @posts = Post.all.paginate(page: params[:page], per_page: 5)
+      @posts = Post.all.order("created_at DESC").paginate(page: params[:page], per_page: 5)
 
     else
       st = "%#{session[:search_query]}%"
-      @posts = Post.where("spot_name like ?", st).paginate(page: params[:page], per_page: 5)
+      @posts = Post.where("spot_name like ?", st).order("created_at DESC").paginate(page: params[:page], per_page: 5)
     end
   end
 
@@ -24,7 +24,7 @@ class PostsController < ApplicationController
   def search
     if params[:search].blank?
       session.delete(:search_query)
-      @posts = Post.all.paginate(page: params[:page], per_page: 5)
+      @posts = Post.all.order("created_at DESC").paginate(page: params[:page], per_page: 5)
       redirect_to request.referrer
     else
       session[:search_query] = params[:search]
