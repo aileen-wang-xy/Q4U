@@ -1,3 +1,4 @@
+
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :createDeal]
 
@@ -5,11 +6,12 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     if session[:search_query].blank?
-      @posts = Post.all.order("created_at DESC")
+      # @posts = Post.all.order("created_at DESC")
+      @posts = Post.all.paginate(page: params[:page], per_page: 5)
+
     else
       st = "%#{session[:search_query]}%"
-      @posts = Post.where("spot_name like ?", st)
-      session.delete(:search_query)
+      @posts = Post.where("spot_name like ?", st).paginate(page: params[:page], per_page: 5)
     end
   end
 
@@ -21,7 +23,8 @@ class PostsController < ApplicationController
   # POST /search
   def search
     if params[:search].blank?
-      @posts = Post.all.order("created_at DESC")
+      session.delete(:search_query)
+      @posts = Post.all.paginate(page: params[:page], per_page: 5)
       redirect_to request.referrer
     else
       session[:search_query] = params[:search]
@@ -31,8 +34,8 @@ class PostsController < ApplicationController
 
   # GET users/:current_user.id/posts
   def myposts
-    @waiting_posts = Post.where(user_id: current_user.id, is_collected: false).order("created_at DESC")
-    @dealt_posts = Post.where(user_id: current_user.id, is_collected: true).order("created_at DESC")
+    @waiting_posts = Post.where(user_id: current_user.id, is_collected: false).order("created_at DESC").paginate(page: params[:page], per_page: 3)
+    @dealt_posts = Post.where(user_id: current_user.id, is_collected: true).order("created_at DESC").paginate(page: params[:page], per_page: 3)
   end
 
   # GET /posts/new
