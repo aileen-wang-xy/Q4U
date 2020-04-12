@@ -22,7 +22,6 @@
     <hr>
 
 
-    
     <% @posts.each do |post| %>
 
       <div class="card" >
@@ -39,7 +38,14 @@
       
     <br>
     <% end %>
-    <%= will_paginate @posts %>
+    <%#= will_paginate @posts %>
+    <%# <div class="digg_pagination">
+    <div class="page_info"> %>
+      <%#= page_entries_info @posts %>
+    <%# </div> %>
+    <%#= will_paginate @posts, :container => false %>
+    <%= paginate @posts %>
+  </div>
 
   </div>
 </section>

@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+
   belongs_to :user
   has_many :comments
   has_one :deal
@@ -14,6 +15,7 @@ class Post < ApplicationRecord
 
   validate :start_time_is_valid
   validate :end_time_is_valid
+  paginates_per 5
 
   def start_time_is_valid
     errors.add(:start_time, ': has already passed') if (start_time.nil? || start_time.past?)

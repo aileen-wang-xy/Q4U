@@ -29,14 +29,12 @@ gem 'rails_admin', '~> 2.0', '>= 2.0.2'
 gem 'cancancan'
 # Provides a better error page for Rails and other Rack apps
 gem 'better_errors', '~> 2.6'
+# Kaminari is a Scope & Engine based, clean, powerful, agnostic, customizable and sophisticated paginator for Rails 4+
+gem 'kaminari', '~> 1.2'
 
-# Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
-
-gem 'will_paginate', '~> 3.1.0'
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
