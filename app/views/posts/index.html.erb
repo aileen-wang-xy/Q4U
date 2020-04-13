@@ -3,13 +3,15 @@
   <div class="container">
 
     <h1>Posts</h1>
+
     <div style="float: right">
       <%= form_tag("/search", :method => "post") do %>
-      <%= label_tag("Search:") %>
+      <%#= label_tag("Search:") %>
       <%= text_field_tag(:search) %>
       <%= submit_tag("Search") %>
       <% end %>
     </div>
+
     <div>
       <% if user_signed_in? %>
         <a href="/posts/new">Create My Posts </a>
@@ -21,31 +23,83 @@
     </div>
     <hr>
 
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#all">ALL</a></li>
+      <li><a data-toggle="tab" href="#requests">REQUEST</a></li>
+      <li><a data-toggle="tab" href="#provides">PROVIDE</a></li>
+    </ul>
 
-    <% @posts.each do |post| %>
+    <div class="tab-content">
+      <div id="all" class="tab-pane fade in active">
 
-      <div class="card" >
-        <div class="card-body">
-          <h5 class="card-title"><%= link_to post.service_type, post %></h5>
-          <p class="card-text"><%= post.spot_name %></p>
-          <h6 class="card-subtitle mb-2 text-muted">Bonus: €<%= post.fee %></h6>
-          <p class="card-text"><%= post.description %></p>
-          <footer class="blockquote-footer">User Id: <cite title="Source Title"><%= post.user_id %></cite></footer>
-          <%= link_to "Delete", post_path(post), method: :delete, data: { confirm: 'Are you certain you want to delete this?'} %>
-        </div>
+        <% @posts.each do |post| %>
+
+          <div class="card" >
+            <div class="card-body">
+              <h5 class="card-title"><%= link_to post.service_type, post %></h5>
+              <p class="card-text"><%= post.spot_name %></p>
+              <h6 class="card-subtitle mb-2 text-muted">Bonus: €<%= post.fee %></h6>
+              <p class="card-text"><%= post.description %></p>
+              <footer class="blockquote-footer">User Id: <cite title="Source Title"><%= post.user_id %></cite></footer>
+              <%= link_to "Delete", post_path(post), method: :delete, data: { confirm: 'Are you certain you want to delete this?'} %>
+            </div>
+          </div>
+          <br>
+        <% end %>
+
+        <%= paginate @posts %>
+        <br>
         <br>
       </div>
-      
-    <br>
-    <% end %>
-    <%#= will_paginate @posts %>
-    <%# <div class="digg_pagination">
-    <div class="page_info"> %>
-      <%#= page_entries_info @posts %>
-    <%# </div> %>
-    <%#= will_paginate @posts, :container => false %>
-    <%= paginate @posts %>
-  </div>
+    </div>
+
+    <div class="tab-content">
+      <div id="requests" class="tab-pane fade in active">
+
+        <% @requests.each do |request| %>
+
+          <div class="card" >
+            <div class="card-body">
+              <h5 class="card-title"><%= link_to request.service_type, request %></h5>
+              <p class="card-text"><%= request.spot_name %></p>
+              <h6 class="card-subtitle mb-2 text-muted">Bonus: €<%= request.fee %></h6>
+              <p class="card-text"><%= request.description %></p>
+              <footer class="blockquote-footer">User Id: <cite title="Source Title"><%= request.user_id %></cite></footer>
+              <%= link_to "Delete", post_path(request), method: :delete, data: { confirm: 'Are you certain you want to delete this?'} %>
+            </div>
+          </div>
+          <br>
+        <% end %>
+
+        <%= paginate @requests %>
+        <br>
+        <br>
+      </div>
+    </div>
+
+    <div class="tab-content">
+      <div id="provides" class="tab-pane fade in active">
+
+        <% @provides.each do |provide| %>
+
+          <div class="card" >
+            <div class="card-body">
+              <h5 class="card-title"><%= link_to provide.service_type, provide %></h5>
+              <p class="card-text"><%= provide.spot_name %></p>
+              <h6 class="card-subtitle mb-2 text-muted">Bonus: €<%= provide.fee %></h6>
+              <p class="card-text"><%= provide.description %></p>
+              <footer class="blockquote-footer">User Id: <cite title="Source Title"><%= provide.user_id %></cite></footer>
+              <%= link_to "Delete", post_path(provide), method: :delete, data: { confirm: 'Are you certain you want to delete this?'} %>
+            </div>
+          </div>
+          <br>
+        <% end %>
+
+        <%= paginate @provides %>
+        <br>
+        <br>
+      </div>
+    </div>
 
   </div>
 </section>
