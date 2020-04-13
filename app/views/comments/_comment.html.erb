@@ -9,9 +9,11 @@
       </p>
     </div>
     <div class="d-flex justify-content-end">
-      <% if comment.user_id == current_user.id %>
-      <%= link_to 'Delete', [comment.post, comment],
-                  method: :delete, class: "button is-danger", data: { confirm: 'Are you sure?' } %>
+      <% if current_user %>
+        <% if comment.user_id == current_user.id %>
+        <%= link_to 'Delete', [comment.post, comment],
+                    method: :delete, class: "button is-danger", data: { confirm: 'Are you sure?' } %>
+        <% end %>
       <% end %>
     </div>
   </article>
