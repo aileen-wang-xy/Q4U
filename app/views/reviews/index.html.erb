@@ -4,7 +4,7 @@
 
     <div class="row">
       <div class="col-6", vertical-align='middle'>
-        <h1>MY CREDIT <span class="account-user_name" data-cs-mask=""><div class="star-rating" data-score= <%= current_user.rating %> ></span></h1>
+        <h1>MY CREDIT <span class="account-user_name" data-cs-mask=""><div class="star-rating" data-score= <%= current_user.rating %> ></span> </h1>
       </div>
 
       <div class="col-6", align="right", vertical-align='middle'>
@@ -14,7 +14,7 @@
 
     <div class="row">
       <div class="col-3", vertical-align='middle'>
-        <h5><strong><%= @reviews.length %></strong> reviews </h5><br>
+        <h5><strong><%= @reviews.length %></strong> Reviews </h5><br>
       </div>
     </div>
     <hr>
@@ -28,7 +28,7 @@
           <div class="star-rating" data-score= <%= review.rating %> ></div>
           <div class="col-6">
             <% reviewer = User.find(review.reviewer_id) %>
-            <p><strong><%= reviewer.name.capitalize() %> </strong>  reviewed: <%= review.created_at.to_s(:db) %> </p>
+            <p><strong><%= reviewer.name.capitalize() %> </strong>  on  <strong><%= review.created_at.to_s(:db) %></strong> </p>
           </div>
         </div>
       </div>

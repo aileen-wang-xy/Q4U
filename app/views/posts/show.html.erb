@@ -80,7 +80,10 @@
     </div>
     <div class="row">
       <div class="col-3"><p><strong>Credit Constraint:</strong></p></div>
-      <div class="col-9"><p><%= @post.constraint %></p></div>
+      <div class="col-9">
+        <div class="star-rating" data-score= <%=  @post.constraint %> ></div>
+      </div>
+      
     </div>
 
   </div>
@@ -103,3 +106,13 @@
 
   </div>
 </section>
+
+<script>
+    $('.star-rating').raty({
+        path: '/assets/',
+        readOnly: true,
+        score: function() {
+            return $(this).attr('data-score');
+    }
+    });
+</script>

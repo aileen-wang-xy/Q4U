@@ -1,5 +1,4 @@
-<section class="section">
-<div class="container" >
+
 <%= form_with(model:[@post, @post.comments.build], remote: true) do |form| %>
 
   <% if current_user %>
@@ -22,5 +21,3 @@
   </div>
 
 <% end %>
-</div>
-</section>

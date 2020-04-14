@@ -1,0 +1,41 @@
+#profile .form{
+    position: absolute;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+.form-signin {
+    display: flex;
+    flex-direction: column;
+    max-width: 50%;
+    padding: 25px 80px;
+    margin-top: 10%;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: rgba(119, 135, 121, 0.5);
+    color: rgb(73, 72, 72);
+    border-radius: 5px;
+}
+.row-padding{
+    margin-top: 20px;
+}
+// // form column vertical center
+// .col-vertial{
+//     vertical-align: center;
+//     padding-top: 10px;
+    
+// }
+
+#profile .btn-darkgreen{
+    position: absolute;
+    width: 10%;
+    left: 49.5%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #162F19;
+    color: #162F19;
+}
+#profile .btn-darkgreen:hover{
+  background: #162F19;
+  color: #fff;
+}

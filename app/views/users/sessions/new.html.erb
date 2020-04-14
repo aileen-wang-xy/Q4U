@@ -1,34 +1,40 @@
 <% provide(:title, "Log in") %>
-<h2>Log in....</h2>
 
+<div class="form-signin" id='profile'>
 
-<div class="row">
-<div class="col-6 col-offset-3">
+  <div class="field"><h1 align="center" style="color: rgb(73, 72, 72);">Log In</h1></div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {id: "profile" }) do |f| %>
     <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <%= f.label :email %><br />
+      <i class="fa fa-at"></i><%= f.email_field :email, autofocus: true, autocomplete: "email" , class:'form-control' %>
     </div>
+
+    <div class="field">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "current-password" , class:'form-control'%>
+    </div>
+
+
+    <div class="row-padding">
+      <% if devise_mapping.rememberable? %>
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      <% end %>
+    </div>
+
+    <div class="row-padding">
+      <div class="actions">
+        <%= f.submit "CONTINUE", class: "btn btn-darkgreen" %>
+      </div>
+    </div>
+
   <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  <br>
+  <div class="row-padding">
+    <%= render "users/shared/links" %>
   </div>
-<% end %>
 
 </div>
-</div>
-<%= render "users/shared/links" %>
+
 
