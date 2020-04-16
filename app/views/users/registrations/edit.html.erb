@@ -1,7 +1,7 @@
 
-<div class="form-signin">
+<div class="form-signin signin-background-color login">
 
-  <div class="field"><h1 align="center" style="color: rgb(73, 72, 72);">EDIT MY PROFILE</h1></div>
+  <div class="userhead row-padding"><h2 align="center">EDIT MY PROFILE</h2></div>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, id: "profile" }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
@@ -29,7 +29,6 @@
       <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
       <%= f.password_field :password, autocomplete: "new-password" , class:'form-control'%>
       <% if @minimum_password_length %>
-        <br />
         <em><%= @minimum_password_length %> characters minimum</em>
       <% end %>
     </div>

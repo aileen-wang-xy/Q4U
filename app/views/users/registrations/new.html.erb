@@ -1,6 +1,7 @@
-<div class="form-signin">
+<div class="form-signin signin-background-color login">
 
-  <div class="field"><h1 align="center" style="color: rgb(73, 72, 72);">SIGN UP</h1></div>
+  <div class="userhead row-padding"><h2 align='center' >SIGN UP</h2></div>
+  <br>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {id: "profile" }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
@@ -35,7 +36,7 @@
 
     <div class="row-padding">
       <div class="actions">
-        <%= f.submit "CREATE" , class: "btn btn-darkgreen"%>
+        <%= f.submit "CREATE" , class: "btn btn-darkgreen" %>
       </div>
     </div>
 

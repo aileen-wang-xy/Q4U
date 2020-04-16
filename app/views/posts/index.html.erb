@@ -1,33 +1,41 @@
 <p id="notice"><%= notice %></p>
 <section class="section">
-  <div class="container">
+  <div class="container login">
 
-    <h1>Posts</h1>
+    <h1 class='formal-head login'>Posts</h1>
 
-    <div style="float: right">
-      <%= form_tag("/search", :method => "post") do %>
-      <%#= label_tag("Search:") %>
-      <%= text_field_tag(:search) %>
-      <%= submit_tag("Search") %>
-      <% end %>
-    </div>
-
-    <div>
-      <% if user_signed_in? %>
-        <a href="/posts/new">Create My Posts </a>
-        <%#= link_to 'Create My Post', new_post_path %>
-      <% else %>
-        <a href="/user/sign_in">Create My Posts</a>
-        <%#= link_to 'Create My Post', new_user_session_path%>
-      <% end %>
+    <div class='row'>
+      <%#---- button"Create My Post" -----%>
+      <div class='col-8 my-auto'>
+        <% if user_signed_in? %>
+          <%# <a href="/posts/new">Create My Posts </a> %>
+          <%= link_to "Create My Post", new_post_path, class: "btn btn-darkgreen-formal" %>
+          <%#= link_to 'Create My Post', new_post_path %>
+        <% else %>
+          <%# <a href="/user/sign_in">Create My Posts</a> %>
+          <%= link_to 'Create My Post', new_user_session_path ,class: "btn btn-darkgreen-formal"%>
+        <% end %>
+      </div>
+      <%#---- input & button"Search" -----%>
+      <div class='col-4 my-auto' , align="right">
+        <div class="input-group " >
+          <div class="form-inline">
+            <%= form_tag("/search", :method => "post") do %>
+              <%= text_field_tag :search,"", class:'form-control'%>
+              <%= button_tag :search, type: "submit", class: "btn btn-darkgreen-formal " %>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
     <br>
+
     <%#---- tabs -----%>
     <nav>
       <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">ALL</a>
-        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">REQUESTS</a>
-        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">PROVIDES</a>
+        <a class="nav-item nav-link active a-tab" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">ALL</a>
+        <a class="nav-item nav-link a-tab" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">REQUESTS</a>
+        <a class="nav-item nav-link a-tab" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">PROVIDES</a>
       </div>
     </nav>
     
@@ -36,26 +44,56 @@
       <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
         <br>
         <% @posts.each do |post| %>
-
           <div class="card" >
             <div class="card-body">
-              <h5 class="card-title"><%= link_to post.service_type, post %></h5>
-              <p class="card-text"><%= post.spot_name %></p>
-              <h6 class="card-subtitle mb-2 text-muted">Bonus: €<%= post.fee %></h6>
-              <p class="card-text"><%= post.description %></p>
-              <footer class="blockquote-footer">User Id: <cite title="Source Title"><%= post.user_id %></cite></footer>
-              <%= link_to "Delete", post_path(post), method: :delete, data: { confirm: 'Are you certain you want to delete this?'} %>
+
+              <h5 class="card-title">
+                <%#= link_to request.service_type, request%>
+                <%= post.service_type %>
+                <span class="bar">|</span>
+                <% if !post.is_collected %>
+                waiting
+                <% else %>
+                dealt
+                <% end %>
+                <span style="float:right">
+                  bonus: €
+                  <%= post.fee %>
+                </span>
+              </h5>
+
+              <h6 class="card-subtitle mb-2 text-muted row-padding-sm">Spot Name: <%= post.spot_name %></h6>
+              <h6 class="card-subtitle mb-2 text-muted row-padding-sm">
+              Start Time: <%= post.start_time.to_s(:db) %>
+              </h6>
+              <h6 class="card-subtitle mb-2 text-muted row-padding-sm">Description: <%= post.description %></h6>
+
+              <span class="my-auto"><br>
+                by
+                <% post_user = User.find(post.user_id) %>
+                <%= link_to post_user.name.capitalize(), users_show_path(:id => post_user.id)%>
+                on 
+                <%= post.created_at.to_s(:db) %>
+              </span>
+
+              <span style="float:right">
+                <% if current_user %>
+                <% if current_user.id == post.user_id && !post.is_collected %>
+                <%= link_to "Delete", post, method: :delete, data: { confirm: 'Are you certain you want to delete this?'}, class:"btn btn-darkgreen-formal" %>
+                <% end %>
+                <% end %>
+                <%= link_to "See More", post, class:"btn btn-darkgreen-formal" %>
+              </span>
+              
             </div>
           </div>
           <br>
         <% end %>
-
-        <%= paginate @posts %>
+        <%= paginate @posts, :param_name => 'page', :params => { :anchor => 'nav-home'}%>
         <br>
         <br>
-
       </div>
-      
+   
       <%#---- display all requests -----%>
       <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
         <br>
@@ -63,18 +101,51 @@
 
           <div class="card" >
             <div class="card-body">
-              <h5 class="card-title"><%= link_to request.service_type, request %></h5>
-              <p class="card-text"><%= request.spot_name %></p>
-              <h6 class="card-subtitle mb-2 text-muted">Bonus: €<%= request.fee %></h6>
-              <p class="card-text"><%= request.description %></p>
-              <footer class="blockquote-footer">User Id: <cite title="Source Title"><%= request.user_id %></cite></footer>
-              <%= link_to "Delete", post_path(request), method: :delete, data: { confirm: 'Are you certain you want to delete this?'} %>
+
+              <h5 class="card-title">
+                <%#= link_to request.service_type, request%>
+                <%= request.service_type %>
+                <span class="bar">|</span>
+                <% if !request.is_collected %>
+                waiting
+                <% else %>
+                dealt
+                <% end %>
+                <span style="float:right">
+                  bonus: €
+                  <%= request.fee %>
+                </span>
+              </h5>
+
+              <h6 class="card-subtitle mb-2 text-muted row-padding-sm">Spot Name: <%= request.spot_name %></h6>
+              <h6 class="card-subtitle mb-2 text-muted row-padding-sm">
+              Start Time: <%= request.start_time.to_s(:db) %>
+              </h6>
+              <h6 class="card-subtitle mb-2 text-muted row-padding-sm">Description: <%= request.description %></h6>
+
+              <span class="my-auto"><br>
+                by
+                <% request_user = User.find(request.user_id) %>
+                <%= link_to request_user.name.capitalize(), users_show_path(:id => request_user.id)%>
+                on 
+                <%= request.created_at.to_s(:db) %>
+              </span>
+
+              <span style="float:right">
+                <% if current_user %>
+                <% if current_user.id == request.user_id && !request.is_collected %>
+                <%= link_to "Delete", request, method: :delete, data: { confirm: 'Are you certain you want to delete this?'}, class:"btn btn-darkgreen-formal" %>
+                <% end %>
+                <% end %>
+                <%= link_to "See More", request, class:"btn btn-darkgreen-formal" %>
+              </span>
+
             </div>
           </div>
           <br>
         <% end %>
 
-        <%= paginate @requests %>
+        <%= paginate @requests, :param_name => 'page_1', :params => { :anchor => 'nav-profile'}%>
         <br>
         <br>
 
@@ -84,21 +155,52 @@
       <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
         <br>
         <% @provides.each do |provide| %>
-
           <div class="card" >
             <div class="card-body">
-              <h5 class="card-title"><%= link_to provide.service_type, provide %></h5>
-              <p class="card-text"><%= provide.spot_name %></p>
-              <h6 class="card-subtitle mb-2 text-muted">Bonus: €<%= provide.fee %></h6>
-              <p class="card-text"><%= provide.description %></p>
-              <footer class="blockquote-footer">User Id: <cite title="Source Title"><%= provide.user_id %></cite></footer>
-              <%= link_to "Delete", post_path(provide), method: :delete, data: { confirm: 'Are you certain you want to delete this?'} %>
+
+              <h5 class="card-title">
+                <%= provide.service_type %>
+                <span class="bar">|</span>
+                <% if !provide.is_collected %>
+                waiting
+                <% else %>
+                dealt
+                <% end %>
+                <span style="float:right">
+                  bonus: €
+                  <%= provide.fee %>
+                </span>
+              </h5>
+
+              <h6 class="card-subtitle mb-2 text-muted row-padding-sm">Spot Name: <%= provide.spot_name %></h6>
+              <h6 class="card-subtitle mb-2 text-muted row-padding-sm">
+              Start Time: <%= provide.start_time.to_s(:db) %>
+              </h6>
+              <h6 class="card-subtitle mb-2 text-muted row-padding-sm">Description: <%= provide.description %></h6>
+
+              <span class="my-auto"><br>
+                by
+                <% provide_user = User.find(provide.user_id) %>
+                <%= link_to provide_user.name.capitalize(), users_show_path(:id => provide_user.id)%>
+                on 
+                <%= provide.created_at.to_s(:db) %>
+              </span>
+
+              <span style="float:right">
+                <% if current_user %>
+                <% if current_user.id == provide.user_id && !provide.is_collected %>
+                <%= link_to "Delete", provide, method: :delete, data: { confirm: 'Are you certain you want to delete this?'}, class:"btn btn-darkgreen-formal" %>
+                <% end %>
+                <% end %>
+                <%= link_to "See More", provide, class:"btn btn-darkgreen-formal" %>
+              </span>
+              
             </div>
           </div>
           <br>
         <% end %>
 
-        <%= paginate @provides %>
+        <%= paginate @provides, :param_name => 'page_2', :params => { :anchor => 'nav-contact'} %>
         <br>
         <br>
 
@@ -106,9 +208,21 @@
 
     </div>
 
-
-
-
-
   </div>
+
 </section>
+
+	<script>
+    $(function(){
+      var hash = document.location.hash;
+      var prefix = "tab_";
+      if (hash) {
+          $('.nav-tabs a[href="'+hash.replace(prefix,"")+'"]').tab('show');
+      } 
+
+      // Change hash for page-reload
+      $('.nav-tabs a').on('shown', function (e) {
+          window.location.hash = e.target.hash.replace("#", "#" + prefix);
+      });
+    });
+	</script>

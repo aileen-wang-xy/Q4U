@@ -12,8 +12,8 @@ class PostsController < ApplicationController
       st = "%#{session[:search_query]}%"
       @posts = Post.where("spot_name like ?", st).order("created_at DESC").page(params[:page])
     end
-    @requests = Post.where(service_type: 'request').order("created_at DESC").page(params[:page])
-    @provides = Post.where(service_type: 'provide').order("created_at DESC").page(params[:page])
+    @requests = Post.where(service_type: 'request').order("created_at DESC").page(params[:page_1]).per(5)
+    @provides = Post.where(service_type: 'provide').order("created_at DESC").page(params[:page_2]).per(5)
   end
 
   # GET /posts/1
@@ -25,9 +25,10 @@ class PostsController < ApplicationController
   def search
     if params[:search].blank?
       session.delete(:search_query)
-      @posts = Post.all.order("created_at DESC").page(params[:page])
+      # @posts = Post.all.order("created_at DESC").page(params[:page])
       redirect_to request.referrer
     else
+      # @posts = Post.where("spot_name like ?", st).order("created_at DESC").page(params[:page])
       session[:search_query] = params[:search]
       redirect_to request.referrer
     end

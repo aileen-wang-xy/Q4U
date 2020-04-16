@@ -13,12 +13,29 @@
     margin-top: 10%;
     margin-right: auto;
     margin-left: auto;
-    background-color: rgba(119, 135, 121, 0.5);
-    color: rgb(73, 72, 72);
-    border-radius: 5px;
 }
+// background color, font color
+.signin-background-color{
+  background-color: rgba(#EEEFEC, 0.5);
+  color: rgb(73, 72, 72);
+  border-radius: 5px;
+}
+// green block border color
+.green-border{
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(119, 135, 121, 0.5);
+  box-shadow: 0 10px 20px rgba(119, 135, 121, 0.19),
+  0 6px 6px rgba(119, 135, 121,0.23) ;
+  color: rgb(73, 72, 72);
+  border-radius: 5px;
+}
+
 .row-padding{
     margin-top: 30px;
+}
+.row-padding-sm{
+  margin-top: 8px;
 }
 // // form column vertical center
 // .col-vertial{
@@ -27,7 +44,7 @@
     
 // }
 
-#profile .btn-darkgreen{
+.btn-darkgreen{
     position: absolute;
     width: 10%;
     left: 49.5%;
@@ -35,7 +52,7 @@
     border: 1px solid #162F19;
     color: #162F19;
 }
-#profile .btn-darkgreen:hover{
+.btn-darkgreen:hover{
   background: #162F19;
   color: #fff;
 }

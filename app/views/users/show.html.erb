@@ -1,51 +1,57 @@
-<h1>PROFILE</h1>
+<div class="form-signin green-border" >
 
-<div class="container">
-    <div class='card center'> 
+    <div class="row">
+        <div class='col 8'>
+            <h1 class ='handwriting'><%= @user.name.capitalize() %></h1>
+        </div>
+    </div>
 
-        <div class="row">
-            <div class='col 2'>
-                <p class='pro'><strong>Name:</strong></p>
-            </div>
-            <div class='col 8'>
-                <p class='pro'><%= @user.name%></p>
-            </div>
+    <div class="row">
+        <div class='col 8'>
+            <div class="star-rating" data-score= <%= @user.rating %> ></div>
         </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    
+    <div class="row">
+        <div class='col 4'>
+        </div>
+        <div class='col-2' align='right'>
+            <h6 class='handwriting'><strong>Phone:</strong></h6>
+        </div>
+        <div class='col-6'>
+            <h6 class='handwriting'><%= @user.contact_no%></h6>
+        </div>
+    </div>
 
-        <div class="row">
-            <div class='col 2'>
-                <p class='pro'><strong>Credit:</strong></p>
-            </div>
-            <div class='col 8'>
-                <div class="star-rating" data-score= <%= current_user.rating %> ></div>
-            </div>
+    <div class="row">
+        <div class='col 4'>
         </div>
-        
-        <div class="row">
-            <div class='col 2'>
-                <p class='pro'><strong>Contact Number:</strong></p>
-            </div>
-            <div class='col 8'>
-                <p class='pro'><%= @user.contact_no%></p>
-            </div>
+        <div class='col-2'>
+            <h6 class='handwriting'><strong>Email:</strong></h6>
         </div>
+        <div class='col-6'>
+            <h6 class='handwriting'><%= @user.email%></h6>
+        </div>
+    </div>
 
-        <div class="row">
-            <div class='col 2'>
-                <p class='pro'><strong>Email:</strong></p>
-            </div>
-            <div class='col 8'>
-                <p class='pro'><%= @user.email%></p>
-            </div>
-        </div>
-        <div class="row">
-            <div class='col 2'>
-                <%= link_to 'Back', :back %> 
-                <%= link_to 'Edit', edit_user_registration_path(:id => @user.id) %>
-            </div>
-        </div>
-    <div>
 </div>
+
+<div class="form-signin">
+    <div class="row">
+        <div class='col 2'>
+            <%= link_to 'Back', :back %>
+            <% if current_user %> 
+            <% if @user.id == current_user.id %>
+              |  <%= link_to 'Edit', edit_user_registration_path(:id => @user.id) %>
+            <% end %>
+            <% end %>
+        </div>
+    </div>
+</div>
+
 
 <script>
     $('.star-rating').raty({

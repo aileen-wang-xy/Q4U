@@ -4,7 +4,7 @@
 
     <div class="row">
       <div class="col-6", vertical-align='middle'>
-        <h1>MY CREDIT <span class="account-user_name" data-cs-mask=""><div class="star-rating" data-score= <%= current_user.rating %> ></span> </h1>
+        <h1>MY CREDIT </h1>
       </div>
 
       <div class="col-6", align="right", vertical-align='middle'>
@@ -13,10 +13,14 @@
     </div>
 
     <div class="row">
+      <div class="col-2", vertical-align='middle'>
+        <div class="star-rating" data-score= <%= current_user.rating %> ></div>
+      </div>
       <div class="col-3", vertical-align='middle'>
-        <h5><strong><%= @reviews.length %></strong> Reviews </h5><br>
+        <h5><strong> based on <%= @reviews.length %></strong> Reviews </h5><br>
       </div>
     </div>
+
     <hr>
 
 

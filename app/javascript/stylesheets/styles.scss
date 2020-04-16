@@ -1,9 +1,82 @@
-.center {
-    margin: auto;
-    width: 60%;
-    border: 2px solid grey;
-    padding: 20px;
-  }
-.block {
-    box-shadow: 0px 0px 0px 4px #999;
+// .center {
+//     margin: auto;
+//     width: 60%;
+//     border: 2px solid grey;
+//     padding: 20px;
+//   }
+// .block {
+//     box-shadow: 0px 0px 0px 4px #999;
+// }
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300;400&family=Fira+Sans:ital,wght@0,200;0,300;0,400;0,600;0,800;0,900;1,200;1,300;1,400&family=Merienda:wght@700&family=Roboto+Condensed:wght@300;400;700&display=swap');
+// ---profile name
+// font-family: 'Merienda', cursive;
+
+// font-family: 'Barlow', sans-serif;
+// font-family: 'Roboto Condensed', sans-serif;
+// font-family: 'Fira Sans', sans-serif;
+
+
+// ------------------------- fonts begin -------------------------
+.handwriting {
+  font-family: 'Merienda', cursive;
 }
+// for posts, comments, reviews head
+.printfont {
+  font-family: 'Fira Sans', sans-serif;
+}
+.login {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+// all about user login,registration,edit head
+.userhead {
+  align-self: center;
+  font-weight: 700;
+  color: rgb(73, 72, 72);
+}
+// for posts, comments, reviews head
+.formal-head {
+  align-self: center;
+  font-weight: 900;
+  font-size: 40px;
+  color: rgb(73, 72, 72);
+}
+// post index title
+.card-body h5 {
+  text-transform: uppercase;
+  font-weight: 700;
+  color: rgb(189, 185, 144);
+}
+
+// ------------------------- fonts end -------------------------
+
+// ------------------------- buttons begin -------------------------
+.btn-darkgreen-formal{
+  border: 1px solid #162F19;
+  color: #162F19;
+}
+.btn-darkgreen-formal:hover{
+background: #162F19;
+color: #fff;
+}
+// tabs in posts index
+.a-tab:hover{
+  background: #162F19;
+  color: #fff;
+}
+.a-tab{
+  color: #162F19;
+}
+
+
+// ------------------------- buttons ends -------------------------
+
+// -------------------------  span begins -------------------------
+// for each bar between service type and is_collected in post index
+.bar {
+  font-size: 20;
+  padding-left: 5px;
+  padding-right: 5px;
+  align-items:center;
+}
+
+// -------------------------  span ends -------------------------

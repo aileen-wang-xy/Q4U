@@ -29,3 +29,12 @@
       flex-direction: column;
     }
   }
+
+  #post .div{
+    border-radius: 0px 0px 40px 40px;
+    padding: 25px 50px;
+    border-color: rgba(119, 135, 121, 0.5);
+    box-shadow: 0 5px 10px rgba(119, 135, 121, 0.19),
+    0 6px 6px rgba(119, 135, 121,0.23) ;
+
+  }
