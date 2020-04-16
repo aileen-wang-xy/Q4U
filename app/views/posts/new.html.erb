@@ -1,7 +1,14 @@
+<section class="section">
+  <div class="login">
 
-<h1>New Post</h1>
+    <h1 class='formal-head login'>Create My Post</h1><br>
+
+    <%= render 'form', post: @post %>
+
+    <%= link_to 'Back', posts_path %>
+
+  </div>
+</section>
 <br>
-<%= render 'form', post: @post %>
 
-<%= link_to 'Back', posts_path %>
 
