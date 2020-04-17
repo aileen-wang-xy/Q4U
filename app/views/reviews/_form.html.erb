@@ -1,7 +1,6 @@
 <section class="section">
 <div class="" >
 
-<%= javascript_include_tag 'jquery.raty.js', "data-turbolinks-track": false %>
 <%= form_with(model: review, local: true) do |form| %>
   <% if review.errors.any? %>
     <div id="error_explanation"  class="row">
