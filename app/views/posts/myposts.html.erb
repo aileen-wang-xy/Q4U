@@ -55,7 +55,7 @@
               <span class="my-auto"><br>
                 by
                 <% waiting_post_user = User.find(waiting_post.user_id) %>
-                <%= link_to waiting_post_user.name.capitalize(), users_show_path(:id => waiting_post_user.id)%>
+                <%= link_to waiting_post_user.name.capitalize(), reviews_path(:id => waiting_post_user.id), class: "link-darkgreen-formal" %>
                 on 
                 <%= waiting_post.created_at.to_s(:db) %>
               </span>
@@ -111,7 +111,7 @@
               <span class="my-auto"><br>
                 by
                 <% dealt_post_user = User.find(dealt_post.user_id) %>
-                <%= link_to dealt_post_user.name.capitalize(), users_show_path(:id => dealt_post_user.id)%>
+                <%= link_to dealt_post_user.name.capitalize(), reviews_path(:id => dealt_post_user.id), class: "link-darkgreen-formal" %>
                 on 
                 <%= dealt_post.created_at.to_s(:db) %>
               </span>

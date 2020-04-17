@@ -6,7 +6,8 @@ class ReviewsController < ApplicationController
   # GET /reviews.json
   # all reviews of current user
   def index
-    @reviews = Review.where(be_reviewed_id: current_user.id).order("created_at DESC")
+    @user = User.find(params[:id])
+    @reviews = Review.where(be_reviewed_id: @user.id).order("created_at DESC")
   end
 
   # GET /reviews/1

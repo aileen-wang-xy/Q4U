@@ -43,7 +43,7 @@
     <%# created by user on create_at time %>
     <div class="row">
       <div class="col-12">
-        by <%= link_to @post.user.name.capitalize(), users_show_path(:id => @post.user.id)%>
+        by <%= link_to @post.user.name.capitalize(), reviews_path(:id => @post.user.id), class: "link-darkgreen-formal" %>
         on <%= @post.created_at.to_s(:db) %>
       </div>
     </div>
@@ -103,7 +103,6 @@
   <%# comments list %>
   <div class="container login form-body row-padding">
     <p class="comment-title login"><%= @post.comments.count %> Comments</p>
-    <hr class='border'>
     <%= render @post.comments.order("created_at DESC") %>
   <div>
   <%# comment form %>
