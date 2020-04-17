@@ -46,6 +46,17 @@
   font-weight: 700;
   color: rgb(189, 185, 144);
 }
+.form-body {
+  font-weight: 400;
+  font-size: 18px;
+  color: rgb(73, 72, 72);
+}
+.comment-title {
+  color: rgb(189, 185, 144);
+  font-weight: 600;
+  font-size: 20px;
+  text-transform: uppercase;
+}
 
 // ------------------------- fonts end -------------------------
 
@@ -58,6 +69,14 @@
 background: #162F19;
 color: #fff;
 }
+.link-darkgreen-formal{
+  color: rgb(189, 185, 144);
+}
+.link-darkgreen-formal:hover{
+background: #162F19;
+color: #fff;
+}
+
 // tabs in posts index
 .a-tab:hover{
   background: #162F19;

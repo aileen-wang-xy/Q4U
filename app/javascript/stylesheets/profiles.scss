@@ -20,8 +20,9 @@
   color: rgb(73, 72, 72);
   border-radius: 5px;
 }
+// ------------------------- border begin -------------------------
 // green block border color
-.green-border{
+.green-border {
   border-style: solid;
   border-width: 1px;
   border-color: rgba(119, 135, 121, 0.5);
@@ -30,19 +31,28 @@
   color: rgb(73, 72, 72);
   border-radius: 5px;
 }
+.border {
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(119, 135, 121, 0.5);
+  border-radius: 5px;
+}
+// ------------------------- border end -------------------------
 
-.row-padding{
+// ------------------------- padding begin -------------------------
+.row-padding {
     margin-top: 30px;
 }
-.row-padding-sm{
+.row-padding-md {
+  margin-top: 12px;
+}
+.row-padding-sm {
   margin-top: 8px;
 }
-// // form column vertical center
-// .col-vertial{
-//     vertical-align: center;
-//     padding-top: 10px;
-    
-// }
+.block-padding-lg {
+  padding: 30px 50px;
+}
+// ------------------------- padding end -------------------------
 
 .btn-darkgreen{
     position: absolute;

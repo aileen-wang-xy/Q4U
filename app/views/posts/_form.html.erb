@@ -1,3 +1,4 @@
+<div class="form-body">
 
 <%= form_with(model: post, local: true) do |form| %>
   <% if post.errors.any? %>
@@ -144,9 +145,9 @@
   <div class="actions">
     <button type="submit" class="btn btn-darkgreen-formal">Submit</button>
   </div>
-  
-<% end %>
 
+<% end %>
+</div>
 <script>
   $('#star-rating').raty({
 	    path: '/assets/',
