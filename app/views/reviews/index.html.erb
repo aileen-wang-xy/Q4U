@@ -20,7 +20,7 @@
     <%# average rating star %>
     <div class="row">
       <div class="col-2", vertical-align='middle'>
-        <div class="star-rating" data-score= <%= current_user.rating %> ></div>
+        <div class="star-rating" data-score= <%= @user.rating %> ></div>
       </div>
       <div class="col-3", vertical-align='middle'>
         <p class="comment-title login"> based on <%= @reviews.length %></strong> Reviews </p>

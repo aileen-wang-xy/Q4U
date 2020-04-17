@@ -13,8 +13,8 @@ class ReviewsController < ApplicationController
   # GET /reviews/1
   # GET /reviews/1.json
   def show
-    @reviewer = User.find(@review.reviewer_id)
-    @be_reviewed_user = User.find(@review.be_reviewed_id)
+    # @reviewer = User.find(@review.reviewer_id)
+    # @be_reviewed_user = User.find(@review.be_reviewed_id)
   end
 
   # GET /reviews/new
