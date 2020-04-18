@@ -1,55 +1,56 @@
 <br>
-<div class="container">
-<h1 class="account-title">
-    MY ACCOUNT  |
-    <span class="account-user_name" data-cs-mask=""><%= current_user.name.capitalize() %></span>
-</h1>
+<section class="my account">
+  <div class="container login">
 
-<div class="content-asset asset-account-landing">
+    <h1 class='formal-head login'>MY ACCOUNT |
+        <span class="account-user_name login"><%= current_user.name.capitalize() %></span>
+    </h1><br>
 
-    <div class="account-options">
+    <div class="content-asset asset-account-landing">
 
-        <a class="account-section" title="Show or update your personal information" href="<%= user_path(current_user.id) %>">
-            <img height="48" width="48" src="https://www.spacenk.com/on/demandware.static/-/Sites-spacenkgb-Library/default/dw78612c09/images/myaccount/my-account-personal-info.jpg" alt="Personal Data">
-            <span class="account-options-title">
-                Personal Info
-            </span>
-            <div class="account-options-description">Show or update your personal information</div>
-        </a>
-       
-        <a class="account-section" title="Check the history list of your posts" href="<%= myposts_path(current_user.id) %>">
-        <%# <% posts = Post.all.where(user_id: current_user.id, is_collected: false).order("created_at DESC")%> 
-        <%# <a class="account-section" title="Check the history list of your posts" href="<%= posts_path(posts) %>
-            <img height="40" width="40" src="https://cdn.onlinewebfonts.com/svg/img_275386.png" alt="Posts">
-            <span class="account-options-title">
-                My Posts
-            </span>
-            <div class="account-options-description">Check the history list of your posts</div>
-        </a>
+        <div class="account-options login">
+            <%# Personal Info %>
+            <a class="account-section" title="Show or update your personal information" href="<%= user_path(current_user.id) %>">
+                <img height="48" width="48" src="https://www.spacenk.com/on/demandware.static/-/Sites-spacenkgb-Library/default/dw78612c09/images/myaccount/my-account-personal-info.jpg" alt="Personal Data">
+                <span class="account-options-title login">
+                    Personal Info
+                </span>
+                <div class="account-options-description">Show or update your personal information</div>
+            </a>
+            <%# My Posts %>
+            <a class="account-section" title="Check the history list of your posts" href="<%= myposts_path(current_user.id) %>">
+                <img height="40" width="40" src="https://cdn.onlinewebfonts.com/svg/img_275386.png" alt="Posts">
+                <span class="account-options-title login">
+                    My Posts
+                </span>
+                <div class="account-options-description">Check the history list of your posts</div>
+            </a>
+            <%# My Deals %>
+            <a class="account-section" title="Check the history list of all your deals" href="/deals">
+                <img height="48" width="48" src="https://cdn4.iconfinder.com/data/icons/hand-gesture-5/512/hand-shake-shaking-hands-deal-agreement-handshake-business-512.png" alt="Collections">
+                <span class="account-options-title login">
+                    My Deals
+                </span>
+                <div class="account-options-description">Check the history list of all your deals</div>
+            </a>
+            <%# My Creidts %>
+            <a class="account-section" title="View all the reviews to you" href="<%= reviews_path(:id =>current_user.id) %>">
+                <img height="48" width="48" src="https://cdn0.iconfinder.com/data/icons/search-engine-optimization-1-3/65/20-512.png" alt="Credits">
+                <span class="account-options-title login">
+                    My Credits
+                </span>
+                <div class="account-options-description">View all the reviews to you</div>
+            </a>
+        </div>
 
-        <a class="account-section" title="Check the history list of all your deals" href="/deals">
-            <img height="48" width="48" src="https://cdn4.iconfinder.com/data/icons/hand-gesture-5/512/hand-shake-shaking-hands-deal-agreement-handshake-business-512.png" alt="Collections">
-            <span class="account-options-title">
-                My collections
-            </span>
-            <div class="account-options-description">Check the history list of all your deals</div>
-        </a>
-
-        <a class="account-section" title="View all the reviews to you" href="<%= reviews_path(:id =>current_user.id) %>">
-            <img height="48" width="48" src="https://cdn0.iconfinder.com/data/icons/search-engine-optimization-1-3/65/20-512.png" alt="Credits">
-            <span class="account-options-title">
-                My Credits
-            </span>
-            <div class="account-options-description">View all the reviews to you</div>
-        </a>
+        <style>
+            a.account-section.wide {
+                width: 98%;
+                margin-left: 1%;
+            }
+        </style>
+        
     </div>
-
-    <style>
-        a.account-section.wide {
-            width: 98%;
-            margin-left: 1%;
-        }
-    </style>
     
-</div>
-</div>
+  </div>
+</section>
