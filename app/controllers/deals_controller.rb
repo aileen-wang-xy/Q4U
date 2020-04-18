@@ -3,7 +3,7 @@ class DealsController < ApplicationController
 
   # current user's all deals
   def index
-    @deals = Deal.where(collector_id: current_user.id).order("created_at DESC")
+    @deals = Deal.where(collector_id: current_user.id).or(Deal.where(creator_id: current_user.id)).order("created_at DESC")
     @posts = Post.all
     @users = User.all
   end
