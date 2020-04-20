@@ -1,5 +1,12 @@
 <%= provide(:title, "Home")%>
 
+
+
+<%# hot options title %>
+<div>
+    <h3 class='comment-title row-padding nav-block' >hot options</h3>
+</div>
+<%# hot options %>
 <div class="cards-list">
   
     <div class="homecard">
@@ -25,5 +32,22 @@
     </div>
 
 </div>
+<br>
+<%# why Q4U %>
+<div class="row-padding img-block">
+    <img height="168" width="135" src="<%= image_path('logo3.png') %>" alt="logo" class="float-right pull-left mr-5" margin-left=20px >
+    <h3 class='comment-title row-padding nav-block'>why q4u?</h3>
+    <h5 class="my-auto sub-title line-h-sm ">You no longer have to stand or sit around immigration office or JD when new limitation lauches, waiting in a queue - because Q4U can help you...<br>
+    Q4U is a free online forum that helps you quickly match queue by person service requirements and resources. </h5>
+</div>
 
+<%# How %>
+<div>
+    <h3 class='comment-title row-padding nav-block' padding-left='10px'>How ?</h3>
+    <h5 class="my-auto sub-title line-h-sm ">Register yourselft as a member <%= link_to 'Register', new_user_registration_path, class: 'btn btn-darkgreen-formal my-2 my-sm-0' %></h5>
+    <h5 class="my-auto sub-title line-h-sm ">Create a post of your queue request or service</h5>
+    <h5 class="my-auto sub-title line-h-sm ">Wait to be collected, and you will receive the email of notification or check your account here manually</h5>
+    <h5 class="my-auto sub-title line-h-sm ">just make a call</h5>
+   
 
+</div>

@@ -33,3 +33,4 @@ import './jquery.raty.js'
 import starhalf from 'images/star-half.png';
 import staroff from 'images/star-off.png';
 import staron from 'images/star-on.png';
+

@@ -52,6 +52,17 @@
 .block-padding-lg {
   padding: 30px 50px;
 }
+.nav-block {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+  margin-left: 30px auto;
+}
+.img-block {
+  height: 168px; 
+  margin-top: auto;
+  margin-bottom: auto;
+}
 // ------------------------- padding end -------------------------
 
 .btn-darkgreen{
