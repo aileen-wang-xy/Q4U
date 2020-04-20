@@ -1,7 +1,5 @@
 <%= provide(:title, "Home")%>
 
-
-
 <%# hot options title %>
 <div>
     <h3 class='comment-title row-padding nav-block' >hot options</h3>
@@ -34,20 +32,39 @@
 </div>
 <br>
 <%# why Q4U %>
-<div class="row-padding img-block">
-    <img height="168" width="135" src="<%= image_path('logo3.png') %>" alt="logo" class="float-right pull-left mr-5" margin-left=20px >
+<div class="row-padding">
+    <img height="135" width="108" src="<%= image_path('logo3.png') %>" alt="logo" class="float-right pull-left mr-5" margin-left=20px >
     <h3 class='comment-title row-padding nav-block'>why q4u?</h3>
-    <h5 class="my-auto sub-title line-h-sm ">You no longer have to stand or sit around immigration office or JD when new limitation lauches, waiting in a queue - because Q4U can help you...<br>
+    <h5 class="my-auto sub-title line-h-sm nav-block">You no longer have to stand or sit around immigration office or JD when new limitation lauches, waiting in a queue - because Q4U can help you...<br>
     Q4U is a free online forum that helps you quickly match queue by person service requirements and resources. </h5>
 </div>
 
 <%# How %>
-<div>
-    <h3 class='comment-title row-padding nav-block' padding-left='10px'>How ?</h3>
+<div class="nav-block">
+    <h3 class='comment-title row-padding' padding-left='10px'>How ?</h3>
     <h5 class="my-auto sub-title line-h-sm ">Register yourselft as a member <%= link_to 'Register', new_user_registration_path, class: 'btn btn-darkgreen-formal my-2 my-sm-0' %></h5>
-    <h5 class="my-auto sub-title line-h-sm ">Create a post of your queue request or service</h5>
-    <h5 class="my-auto sub-title line-h-sm ">Wait to be collected, and you will receive the email of notification or check your account here manually</h5>
-    <h5 class="my-auto sub-title line-h-sm ">just make a call</h5>
-   
+    <h5 class="my-auto sub-title line-h-sm ">Create a post for your queue request or service.</h5>
+    <h5 class="my-auto sub-title line-h-sm ">When it is collected, you will receive the email of notification.</h5>
+    <h5 class="my-auto sub-title line-h-sm ">You can also collect the other post if it is suitable for you.</h5>
+    <h5 class="my-auto sub-title line-h-sm ">Just make a call or send email to conntact.</h5>
+</div>
+
+<%# latest 10 posts %>
+<div class="nav-block">
+    <h3 class='comment-title row-padding' >latest posts</h3><br>
+    <div class="nav-block latest-border ">
+        <% @posts.each do |post| %>
+
+           <div class="row row-padding-md" >
+           <div class="col-1" >
+           </div>
+            <div class="col-11" >
+            <h6 class='login'> <span class='mar-right'><%= link_to post.service_type.capitalize(), post, class: 'link-darkgreen-formal'%></span>
+            for queueing in <%= post.spot_name %> starts <%= post.start_time.to_s(:db) %>, payment is €<%= post.fee %>
+            </h6>
+          </div>
+          </div>
+        <% end %>
+   </div>
 
 </div>
