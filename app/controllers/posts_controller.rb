@@ -1,3 +1,4 @@
+
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :createDeal]
 
@@ -5,12 +6,14 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     if session[:search_query].blank?
-      @posts = Post.all.order("created_at DESC")
+      @posts = Post.all.order("created_at DESC").page(params[:page])
+
     else
       st = "%#{session[:search_query]}%"
-      @posts = Post.where("spot_name like ?", st)
-      session.delete(:search_query)
+      @posts = Post.where("spot_name like ?", st).order("created_at DESC").page(params[:page])
     end
+    @requests = Post.where(service_type: 'request').order("created_at DESC").page(params[:page_1]).per(5)
+    @provides = Post.where(service_type: 'provide').order("created_at DESC").page(params[:page_2]).per(5)
   end
 
   # GET /posts/1
@@ -21,9 +24,11 @@ class PostsController < ApplicationController
   # POST /search
   def search
     if params[:search].blank?
-      @posts = Post.all.order("created_at DESC")
+      session.delete(:search_query)
+      # @posts = Post.all.order("created_at DESC").page(params[:page])
       redirect_to request.referrer
     else
+      # @posts = Post.where("spot_name like ?", st).order("created_at DESC").page(params[:page])
       session[:search_query] = params[:search]
       redirect_to request.referrer
     end
@@ -31,17 +36,13 @@ class PostsController < ApplicationController
 
   # GET users/:current_user.id/posts
   def myposts
-    @posts = Post.where(user_id: current_user.id).order("created_at DESC")
+    @waiting_posts = Post.where(user_id: current_user.id, is_collected: false).order("created_at DESC").page(params[:page])
+    @dealt_posts = Post.where(user_id: current_user.id, is_collected: true).order("created_at DESC").page(params[:page])
   end
 
   # GET /posts/new
   def new
     @post = Post.new
-  end
-
-  # GET /posts/1/edit
-  def edit
-    @post = Post.find(params[:id])
   end
 
   # POST /posts
@@ -59,20 +60,6 @@ class PostsController < ApplicationController
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /posts/1
-  # PATCH/PUT /posts/1.json
-  def update
-    respond_to do |format|
-      if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
-        format.json { render :show, status: :ok, location: @post }
-      else
-        format.html { render :edit }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end

@@ -1,60 +1,57 @@
 <br>
 <section class="section">
-  <div class="container">
-
+  <div class="login form-body">
+    <%# title -- if current user's name display "my credit", else display "usernam credit" %>
     <div class="row">
-      <div class="col-6", vertical-align='middle'>
-        <h1>MY CREDIT <span class="account-user_name" data-cs-mask=""><div class="star-rating" data-score= <%= current_user.rating %> ></span></h1>
+      <div class="col-7 my-auto">
+        <% if !current_user %>
+          <h1 class='formal-head login'> <%= @user.name.capitalize() %> Credit </h1>
+        <% elsif @user.id == current_user.id %>
+          <h1 class='formal-head login'> My Credit </h1>
+        <% else %>
+          <h1 class='formal-head login'> <%= @user.name.capitalize() %> Credit </h1>
+        <% end %>
       </div>
 
-      <div class="col-6", align="right", vertical-align='middle'>
-        <%= link_to "Back", my_account_path , class: "btn btn-outline-dark" %>
+      <div class="col-5 my-auto", align="right">
+        <%= link_to "Back", my_account_path , class: "btn btn-darkgreen-formal" %>
       </div>
     </div>
-
+    <%# average rating star %>
     <div class="row">
+      <div class="col-2", vertical-align='middle'>
+        <div class="star-rating" data-score= <%= @user.rating %> ></div>
+      </div>
       <div class="col-3", vertical-align='middle'>
-        <h5><strong><%= @reviews.length %></strong> reviews </h5><br>
+        <p class="comment-title login"> based on <%= @reviews.length %></strong> Reviews </p>
       </div>
     </div>
-    <hr>
-
-
-    <% @reviews.each do |review| %>
-
-    <div class="card">
-      <div class="card-header">
-        <div class="row ">
-          <div class="star-rating" data-score= <%= review.rating %> ></div>
-          <div class="col-6">
-            <% reviewer = User.find(review.reviewer_id) %>
-            <p><strong><%= reviewer.name.capitalize() %> </strong>  reviewed: <%= review.created_at.to_s(:db) %> </p>
-          </div>
-        </div>
-      </div>
-
+  </div>
+  <br>
+    
+  <%# reviews list %> 
+  <% @reviews.each do |review| %>
+    <div class="border">
       <article class="card-body">
         <div class="content">
-          <p>
-            <%= review.comment %><br>
-          </p>
+          <div class="star-rating" data-score= <%= review.rating %> ></div><br>
+          <strong><%= link_to review.reviewer.name.capitalize(), reviews_path(:id => review.reviewer.id), class: "link-darkgreen-formal" %></strong>
+          on  <%= review.created_at.to_s(:db) %><br>
+          <h6 class="row-padding-sm login line-h-sm"><%= review.comment %><h6>
         </div>
       </article>
-
     </div>
     <br>
-
-    <% end %>
-
-   </div>
+  <% end %>
 </section>
 
-	<script>
-	    $('.star-rating').raty({
-	      path: '/assets/',
-	      readOnly: true,
-	      score: function() {
-	            return $(this).attr('data-score');
-	    }
-	  });
-	</script>
+<script>
+    $('.star-rating').raty('reload');
+    $('.star-rating').raty({
+      path: '/assets/',
+      readOnly: true,
+      score: function() {
+            return $(this).attr('data-score');
+    }
+  });
+</script>

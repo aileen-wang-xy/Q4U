@@ -1,38 +1,143 @@
 <br>
 <section class="section">
-  <div class="container">
-    
+  <div class="container login">
+  
     <div class="row">
-      <div class="col-3", vertical-align='middle'>
-        <h1>MY POSTS</h1>
+      <div class="col-9", vertical-align='middle'>
+        <h1 class='formal-head login'>MY POSTS</h1>
       </div>
 
-      <div class="col-9", align="right", vertical-align='middle'>
-        <%= link_to "Back", my_account_path , class: "btn btn-outline-dark" %>
+      <div class="col-3 my-auto", align="right">
+        <%= link_to "Back", my_account_path , class: "btn btn-darkgreen-formal" %>
       </div>
     </div>
+    <br>
 
-    <div class="row">
-      <div class="col-3", vertical-align='middle'>
-        <h5><strong><%= @posts.length %></strong> posts </h5><br>
+    <%#---- tabs -----%>
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active a-tab" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">WAITING</a>
+        <a class="nav-item nav-link a-tab" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">DEALT</a>
       </div>
+    </nav>
+
+    <div class="tab-content" id="nav-tabContent">
+
+      <%#---- display my waiting posts -----%>
+      <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        <br>
+        <% @waiting_posts.each do |waiting_post| %>
+
+          <div class="card" >
+            <div class="card-body">
+
+              <h5 class="card-title">
+                <%#= link_to request.service_type, request%>
+                <%= waiting_post.service_type %>
+                <span class="bar">|</span>
+                <% if !waiting_post.is_collected %>
+                waiting
+                <% else %>
+                dealt
+                <% end %>
+                <span style="float:right">
+                  bonus: €
+                  <%= waiting_post.fee %>
+                </span>
+              </h5>
+
+              <h6 class="card-subtitle mb-2 text-muted row-padding-sm">Spot Name: <%= waiting_post.spot_name %></h6>
+              <h6 class="card-subtitle mb-2 text-muted row-padding-sm">
+              Start Time: <%= waiting_post.start_time.to_s(:db) %>
+              </h6>
+              <h6 class="card-subtitle mb-2 text-muted row-padding-sm">Description: <%= waiting_post.description %></h6>
+
+              <span class="my-auto"><br>
+                by
+                <% waiting_post_user = User.find(waiting_post.user_id) %>
+                <%= link_to waiting_post_user.name.capitalize(), reviews_path(:id => waiting_post_user.id), class: "link-darkgreen-formal" %>
+                on 
+                <%= waiting_post.created_at.to_s(:db) %>
+              </span>
+
+              <span style="float:right">
+                <% if current_user %>
+                <% if current_user.id == waiting_post.user_id && !waiting_post.is_collected %>
+                <%= link_to "Delete", waiting_post, method: :delete, data: { confirm: 'Are you certain you want to delete this?'}, class:"btn btn-darkgreen-formal" %>
+                <% end %>
+                <% end %>
+                <%= link_to "See More", waiting_post, class:"btn btn-darkgreen-formal" %>
+              </span>
+              
+            </div>
+          </div>
+          <br>
+        <% end %>
+
+        <%= paginate @waiting_posts %>
+        <br>
+        <br>
+
+      </div>
+      
+      <%#---- display my dealt requests -----%>
+      <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+        <br>
+        <% @dealt_posts.each do |dealt_post| %>
+
+          <div class="card" >
+            <div class="card-body">
+
+              <h5 class="card-title">
+                <%= dealt_post.service_type %>
+                <span class="bar">|</span>
+                <% if !dealt_post.is_collected %>
+                waiting
+                <% else %>
+                dealt
+                <% end %>
+                <span style="float:right">
+                  bonus: €
+                  <%= dealt_post.fee %>
+                </span>
+              </h5>
+
+              <h6 class="card-subtitle mb-2 text-muted row-padding-sm">Spot Name: <%= dealt_post.spot_name %></h6>
+              <h6 class="card-subtitle mb-2 text-muted row-padding-sm">
+              Start Time: <%= dealt_post.start_time.to_s(:db) %>
+              </h6>
+              <h6 class="card-subtitle mb-2 text-muted row-padding-sm">Description: <%= dealt_post.description %></h6>
+
+              <span class="my-auto"><br>
+                by
+                <% dealt_post_user = User.find(dealt_post.user_id) %>
+                <%= link_to dealt_post_user.name.capitalize(), reviews_path(:id => dealt_post_user.id), class: "link-darkgreen-formal" %>
+                on 
+                <%= dealt_post.created_at.to_s(:db) %>
+              </span>
+
+              <span style="float:right">
+                <% if current_user %>
+                <% if current_user.id == dealt_post.user_id && !dealt_post.is_collected %>
+                <%= link_to "Delete", dealt_post, method: :delete, data: { confirm: 'Are you certain you want to delete this?'}, class:"btn btn-darkgreen-formal" %>
+                <% end %>
+                <% end %>
+                <%= link_to "See More", dealt_post, class:"btn btn-darkgreen-formal" %>
+              </span>
+              
+            </div>
+          </div>
+          <br>
+        <% end %>
+
+        <%= paginate @dealt_posts %>
+        <br>
+        <br>
+
+      </div>
+
     </div>
-    <hr>
-
-    <% @posts.each do |post| %>
-
-      <div class="card" >
-        <div class="card-body">
-          <h5 class="card-title"><%= link_to post.service_type, post %></h5>
-          <h6 class="card-subtitle mb-2 text-muted">Bonus: €<%= post.fee %></h6>
-          <p class="card-text"><%= post.description %></p>
-          <footer class="blockquote-footer">Post Id: <cite title="Source Title"><%= post.id %></cite></footer>
-          <%= link_to "Delete", post_path(post), method: :delete, data: { confirm: 'Are you certain you want to delete this?'} %>
-        </div>
-      </div>
-      <br>
-
-    <% end %>
 
   </div>
+
 </section>

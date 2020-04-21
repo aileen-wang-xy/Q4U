@@ -1,7 +1,9 @@
+<div class="form-body">
 
 <%= form_with(model: post, local: true) do |form| %>
   <% if post.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="row">
+      <div class="col-7 alert alert-danger">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
       <ul>
@@ -9,62 +11,60 @@
           <li><%= message %></li>
         <% end %>
       </ul>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    <%# <%= form.label :user_id %> 
-    <%# <%= form.text_field :user_id %> 
-  </div>
 
   <div class="field">
     <div class="row">
-      <div class="col-3">
+      <div class="col-3 my-auto">
         <%= form.label :service_type %>
       </div>
-      <div class="col-9">
-        <%#= form.text_field :service_type %>
-        <%= form.select(:service_type, options_for_select([['request queue service','request'],['provide queue service','provide']]))%>
+      <div class="col-4">
+        <%= form.select(:service_type, options_for_select([['Request Queue Service','request'],['Provide Queue Service','provide']]), {include_blank: "Select One"}, {:class =>'form-control'}) %>
       </div>
     </div>
   </div>
 
+
   <div class="field">
     <div class="row">
-      <div class="col-3">
+      <div class="col-3 my-auto">
         <%= form.label :spot_name %>
       </div>
-      <div class="col-9">  
-        <%= form.text_field :spot_name %>
+      <div class="col-4">  
+        <%= form.text_field :spot_name , class:'form-control'%>
       </div>
     </div>
   </div>
 
+
   <div class="field">
     <div class="row">
-      <div class="col-3">
+      <div class="col-3 my-auto">
         <%= form.label :address %>
       </div>
-      <div class="col-9">  
-        <%= form.text_field :address %>
+      <div class="col-4">  
+        <%= form.text_field :address , class:'form-control' %>
       </div>
     </div>
   </div>
 
   <div class="field">
     <div class="row">
-      <div class="col-3">
-        <%= form.label :fee %>
+      <div class="col-3 my-auto">
+        <%= form.label :bonus %>
       </div>
-      <div class="col-9">  
-        <%= form.number_field :fee %>
+      <div class="col-4">  
+        <%= form.number_field :fee, min:0, step:5, class:'form-control' %>
       </div>
     </div>
   </div>
 
   <div class="field">
     <div class="row">
-      <div class="col-3">
+      <div class="col-3 my-auto">
         <%= form.label :start_time %>
       </div>
       <div class="col-4">  
@@ -75,7 +75,7 @@
 
   <div class="field">
     <div class="row">
-      <div class="col-3">
+      <div class="col-3 my-auto">
         <%= form.label :end_time %>
       </div>
       <div class="col-4">  
@@ -86,13 +86,12 @@
 
   <div class="field">
     <div class="row">
-      <div class="col-3">
+      <div class="col-3 ">
         <%= form.label :description %>
       </div>
-      <div class="col-9">
-        <%#= form.text_area :description %>
+      <div class="col-7">
         <div class="form-group">
-          <%= form.text_area :description , class:'form-control', :rows => 5 %>
+          <%= form.text_area :description , class:'form-control', :rows => 5, placeholder:"Describe your needs. The more detailed, the better." %>
         </div>
       </div>
     </div>
@@ -100,50 +99,59 @@
 
   <div class="field">
     <div class="row">
-      <div class="col-3">
+      <div class="col-3 my-auto">
         <%= form.label :contact_name %>
       </div>
-      <div class="col-9">
-        <%= form.text_field :contact_name %>
+      <div class="col-4">
+        <%= form.text_field :contact_name, class:'form-control' %>
       </div>
     </div>
   </div>
 
   <div class="field">
     <div class="row">
-      <div class="col-3">
+      <div class="col-3 my-auto">
         <%= form.label :contactno %>
       </div>
-      <div class="col-9">
-        <%= form.text_field :contactno %>
+      <div class="col-4">
+        <%= form.text_field :contactno, class:'form-control' %>
       </div>
     </div>
   </div>
 
   <div class="field">
     <div class="row">
-      <div class="col-3">
+      <div class="col-3 my-auto">
         <%= form.label :contact_email %>
       </div>
-      <div class="col-9">
-        <%= form.text_field :contact_email %>
+      <div class="col-4">
+        <%= form.email_field :contact_email, class:'form-control' %>
       </div>
     </div>
   </div>
 
   <div class="field">
-    <div class="row">
-      <div class="col-3">
+    <div class="row row-padding">
+      <div class="col-3 my-auto">
         <%= form.label :constraint %>
       </div>
-      <div class="col-9">
-        <%= form.number_field :constraint %>
+      <div class="col-7">
+        <div id="star-rating"></div>
+        <small id="emailHelp" class="form-text text-muted">We'll filter the collector who's credit is less than the constraint.</small>
       </div>
     </div>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <button type="submit" class="btn btn-darkgreen-formal">Submit</button>
   </div>
+
 <% end %>
+</div>
+<script>
+  $('#star-rating').raty({
+	    path: '/assets/',
+	    scoreName: 'review[rating]'
+	  });
+</script>
 

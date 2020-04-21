@@ -1,74 +1,98 @@
 <br>
-
 <p id="notice"><%= notice %></p>
-  <% if flash[:alert] %>
-    <div class="alert alert-info">
-      <%= flash[:alert] %>
-  </div>
-  <% end %>
+
+<% if flash[:alert] %>
+  <div class="alert alert-info">
+    <%= flash[:alert] %>
+</div>
+<% end %>
+
 <section class="post">
-  <div class="container">
+  <div class="container login form-body">
+    <%# title %>
     <div class="row">
-
-      <div class="col-2", vertical-align='middle'><h2><strong>
-        <%= @post.service_type.upcase %>| </strong></h2>
-      </div>
-
-      <div class="col-2", vertical-align='middle'>
-        <% if @post.is_collected %>
-          DEALED
-        <% else %>
+      <%# post type % status %>
+      <div class="col-7 my-auto">
+        <h1 class='formal-head login'>
+          <%= @post.service_type.upcase %>
+          <span class="bar">|</span>
+          <% if !@post.is_collected %>
           WAITING
-        <% end %>
+          <% else %>
+          DEALT
+          <% end %>
+        </h1>
       </div>
-
-      <div class="col-8", align="right"><p>
-        <% if !@post.is_collected %>
-          <%= link_to 'Collect', deals_create_path(:id => @post.id),
-                    method: :preview, class: "btn btn-outline-dark", data: { confirm: 'Are you sure?' } %> |
+      <%# collect/review or/and back button %>
+      <div class="col-5 my-auto", align="right">
+        <% if !@post.is_collected %> <%# condition: the post is waiting to be collected %>
+          <%= link_to 'Collect', deals_create_path(:id => @post.id), method: :preview, class: "btn btn-darkgreen-formal", data: { confirm: 'Are you sure?' } %> |
+        <% else %> <%# condition: the post was collected / dealt %>
+          <% deal = @post.deal %>
+          <%# if current user hasn't reviewed this deal %>
+          <% if !current_user %>
+          <% elsif (deal.creator_id == current_user.id && deal.creator_rating == false) || (deal.collector_id == current_user.id && deal.collector_rating == false) %>
+          <%= link_to 'Review', add_reviews_path(deal.id) , :class => 'btn btn-darkgreen-formal' %> |
+          <% end %>
         <% end %>
-        <%#= link_to 'Edit', edit_post_path(@post) %> 
-        <%= link_to 'Back', posts_path, class: "btn btn-outline-dark" %>
-      </p></div>
+        
+        <%= link_to "Back", :back , class: "btn btn-darkgreen-formal" %>
+      </div>
+    </div>
 
+    <%# created by user on create_at time %>
+    <div class="row">
+      <div class="col-12">
+        by <%= link_to @post.user.name.capitalize(), reviews_path(:id => @post.user.id), class: "link-darkgreen-formal" %>
+        on <%= @post.created_at.to_s(:db) %>
+      </div>
     </div>
-    <hr>
+    <br>
 
-    <div class="row">
-      <div class="col-3"><p><strong>Spot Address:</strong></p></div>
-      <div class="col-9"><p><%= @post.address %></p></div>
-    </div>
-    <div class="row">
-      <div class="col-3"><p><strong>Bonus:</strong></p></div>
-      <div class="col-9"><p><%= @post.fee %></p></div>
-    </div>
-    <div class="row">
-      <div class="col-3"><p><strong>Start time:</strong></p></div>
-      <div class="col-9"><p><%= @post.start_time.to_s(:db) %></p></div>
-    </div>
-    <div class="row">
-      <div class="col-3"><p><strong>End time:</strong></p></div>
-      <div class="col-9"><p><%= @post.end_time.to_s(:db) %></p></div>
-    </div>
-    <div class="row">
-      <div class="col-3"><p><strong>Description:</strong></p></div>
-      <div class="col-9"><p><%= @post.description %></p></div>
-    </div>
-    <div class="row">
-      <div class="col-3"><p><strong>Contact name:</strong></p></div>
-      <div class="col-9"><p><%= @post.contact_name.capitalize() %></p></div>
-    </div>
-    <div class="row">
-      <div class="col-3"><p><strong>Contactno:</strong></p></div>
-      <div class="col-9"><p><%= @post.contactno %></p></div>
-    </div>
-    <div class="row">
-      <div class="col-3"><p><strong>Contact email:</strong></p></div>
-      <div class="col-9"><p><%= @post.contact_email %></p></div>
-    </div>
-    <div class="row">
-      <div class="col-3"><p><strong>Credit Constraint:</strong></p></div>
-      <div class="col-9"><p><%= @post.constraint %></p></div>
+    <%# post content body %>
+    <div class='block-padding-lg green-border'>
+      <div class="row">
+        <div class="col-3">Spot Name:</div>
+        <div class="col-9"><%= @post.spot_name %></div>
+      </div>
+      <div class="row row-padding-md">
+        <div class="col-3">Spot Address:</div>
+        <div class="col-9"><%= @post.address %></div>
+      </div>
+      <div class="row row-padding-md">
+        <div class="col-3">Bonus:</div>
+        <div class="col-9">€ <%= @post.fee %></div>
+      </div>
+      <div class="row row-padding-md">
+        <div class="col-3">Start time:</div>
+        <div class="col-9"><%= @post.start_time.to_s(:db) %></div>
+      </div>
+      <div class="row row-padding-md">
+        <div class="col-3">End time:</div>
+        <div class="col-9"><%= @post.end_time.to_s(:db) %></div>
+      </div>
+      <div class="row row-padding-md">
+        <div class="col-3">Description:</div>
+        <div class="col-9"><%= @post.description %></div>
+      </div>
+      <div class="row row-padding-md">
+        <div class="col-3">Contact name:</div>
+        <div class="col-9"><%= @post.contact_name.capitalize() %></div>
+      </div>
+      <div class="row row-padding-md">
+        <div class="col-3">Contactno:</div>
+        <div class="col-9"><%= @post.contactno %></div>
+      </div>
+      <div class="row row-padding-md">
+        <div class="col-3">Contact email:</div>
+        <div class="col-9"><%= @post.contact_email %></div>
+      </div>
+      <div class="row row-padding-md">
+        <div class="col-3">Credit Constraint:</div>
+        <div class="col-9">
+          <div class="star-rating" data-score= <%= @post.constraint %> ></div>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -76,18 +100,25 @@
 
 <br>
 <section class="comments">
-  <div class="container">
-    <p class="text-info"><%= @post.comments.count %> Comments</p>
-    <hr>
-
-    <%= render @post.comments %>
-    
-    <div>
-      <hr>
-      <p class="text-info">Leave My Comment</p>
-      <br>
-      <%= render 'comments/form' %>
-    </div>
-
-  </div>
+  <%# comments list %>
+  <div class="container login form-body row-padding">
+    <p class="comment-title login"><%= @post.comments.count %> Comments</p>
+    <%= render @post.comments.order("created_at DESC") %>
+  <div>
+  <%# comment form %>
+  <div class="login form-body">
+    <p class="comment-title login">Leave My Comment</p>
+    <%= render 'comments/form' %>
+  </div>
 </section>
+
+<script>
+    $('.star-rating').raty({
+        path: '/assets/',
+        readOnly: true,
+        score: function() {
+            return $(this).attr('data-score');
+    }
+    });
+</script>
+

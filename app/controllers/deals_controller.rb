@@ -3,7 +3,7 @@ class DealsController < ApplicationController
 
   # current user's all deals
   def index
-    @deals = Deal.where(collector_id: current_user.id).order("created_at DESC")
+    @deals = Deal.where(collector_id: current_user.id).or(Deal.where(creator_id: current_user.id)).order("created_at DESC")
     @posts = Post.all
     @users = User.all
   end
@@ -16,8 +16,6 @@ class DealsController < ApplicationController
 
   def create
     @post = Post.find(params[:id])
-    # @collector = current_user.id
-    # @creator = @post.user_id
     @collector = User.find(current_user.id)
     @creator = User.find(@post.user_id)
     if !@post.constraint.nil? && @collector.rating < @post.constraint
@@ -32,9 +30,8 @@ class DealsController < ApplicationController
       # when someone collects the post, the status of is_collected becomes true
       @post.update_attribute(:is_collected, true)
 
-      UserMailer.with(user: @collector).collector_email.deliver_later
-      UserMailer.with(user: @creator).creator_email.deliver_later
-      # redirect_to action: 'show', id: @deal.id
+      UserMailer.with(user: @collector, creator: @creator).collector_email.deliver_later
+      UserMailer.with(user: @creator, collector: @collector).creator_email.deliver_later
       redirect_to :action => :show, id: @deal.id
     end
   end

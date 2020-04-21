@@ -1,49 +1,62 @@
-<h1>PROFILE</h1>
+<div class="form-signin green-border" >
+    <%# user name %>
+    <div class="row">
+        <div class='col 8'>
+            <h1 class ='handwriting'><%= @user.name.capitalize() %></h1>
+        </div>
+    </div>
+    <%# user credit %>
+    <div class="row">
+        <div class='col 8'>
+            <div class="star-rating" data-score= <%= @user.rating %> ></div>
+        </div>
+    </div><br><br><br>
+    <%# user phone %>
+    <div class="row">
+        <div class='col 4'>
+        </div>
+        <div class='col-2' align='right'>
+            <h6 class='handwriting'><strong>Phone:</strong></h6>
+        </div>
+        <div class='col-6'>
+            <h6 class='handwriting'><%= @user.contact_no%></h6>
+        </div>
+    </div>
+    <%# user email %>
+    <div class="row">
+        <div class='col 4'>
+        </div>
+        <div class='col-2'>
+            <h6 class='handwriting'><strong>Email:</strong></h6>
+        </div>
+        <div class='col-6'>
+            <h6 class='handwriting'><%= @user.email%></h6>
+        </div>
+    </div>
 
-<div class="container">
-    <%# style.scss .center %>
-    <div class='card center'> 
-
-        <div class="row">
-            <div class='col 2'>
-                <p class='pro'><strong>Name:</strong></p>
-            </div>
-            <div class='col 8'>
-                <p class='pro'><%= @user.name%></p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class='col 2'>
-                <p class='pro'><strong>Credit:</strong></p>
-            </div>
-            <div class='col 8'>
-                <p class='pro'><%= @user.rating%></p>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class='col 2'>
-                <p class='pro'><strong>Contact Number:</strong></p>
-            </div>
-            <div class='col 8'>
-                <p class='pro'><%= @user.contact_no%></p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class='col 2'>
-                <p class='pro'><strong>Email:</strong></p>
-            </div>
-            <div class='col 8'>
-                <p class='pro'><%= @user.email%></p>
-            </div>
-        </div>
-        <div class="row">
-            <div class='col 2'>
-                <%= link_to 'Back', :back %> 
-                <%= link_to 'Edit', edit_user_registration_path(:id => @user.id) %>
-            </div>
-        </div>
-    <div>
 </div>
+
+<%# edit / back link %>
+<div class="form-signin">
+    <div class="row">
+        <div class='col 2'>
+            <%= link_to 'Back', :back , class: "link-darkgreen-formal"%>
+            <% if current_user %> 
+            <% if @user.id == current_user.id %>
+              |  <%= link_to 'Edit', edit_user_registration_path(:id => @user.id) , class: "link-darkgreen-formal"%>
+            <% end %>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $('.star-rating').raty({
+        path: '/assets/',
+        readOnly: true,
+        score: function() {
+            return $(this).attr('data-score');
+    }
+    });
+</script>

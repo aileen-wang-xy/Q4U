@@ -290,6 +290,7 @@ DEPENDENCIES
   devise
   factory_bot_rails (~> 5.1, >= 5.1.1)
   jbuilder (~> 2.7)
+  kaminari (~> 1.2)
   pg
   puma (~> 4.1)
   rails (~> 6.0.2, >= 6.0.2.1)
