@@ -16,8 +16,8 @@ Q4U brings the comment function to each post to help both demander and potential
 
 ## Project Keys
 
-#### 1. Preparasion
-This application is developed by Ruby On Rails. If you want to download the code and run locally, it is important to set up development environment first.
+#### 1. Preparation
+This application is developed by Ruby on Rails. If you want to download the code and run locally, it is important to set up development environment first.
 
 Here is a reference of setting up your development environment using the Windows Subsystem for Linux. https://www.endpoint.com/blog/2019/04/04/rails-development-in-windows-10-pro-with-visual-studio-code-and-wsl
 
@@ -35,11 +35,16 @@ For local development download git repository, navigate to the downloaded folder
 + Install all the dependencies listed within package.json 
   yarn install --check-files
 
++ Setup the tables in db/migrate/
+  rake db:migrate
+
 + Run server
   Rails server
 
 + open the application on localhost:3000
 ````
+There are two databases are used, SQLite3 for development and PostgreSQL for deployment. An error with SQLite3 might accur for Windows 10 users running locally. Simply solution is **gem uninstall sqlite3** and **gem install sqlite3** , then go through steps again. OR update Gemfile **gem ‘sqlite3’, git: “https://github.com/larskanis/sqlite3-ruby", branch: “add-gemspec”**, and go through steps again.
+
 #### 3. Test
 RSpec framework is installed for testing as well as other tools specified in Gemfile. All testing cases are under spec folder. 
 ````diff

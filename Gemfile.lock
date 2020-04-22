@@ -287,7 +287,7 @@ DEPENDENCIES
   cancancan
   capybara (>= 2.15)
   database_cleaner
-  devise
+  devise (~> 4.7, >= 4.7.1)
   factory_bot_rails (~> 5.1, >= 5.1.1)
   jbuilder (~> 2.7)
   kaminari (~> 1.2)
@@ -298,7 +298,7 @@ DEPENDENCIES
   rails_admin (~> 2.0, >= 2.0.2)
   rspec-rails (~> 4.0.0)
   sass-rails (>= 6)
-  selenium-webdriver
+  selenium-webdriver (~> 3.142, >= 3.142.7)
   sqlite3 (~> 1.4)
   turbolinks (~> 5)
   web-console (>= 3.3.0)
