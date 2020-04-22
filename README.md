@@ -1,4 +1,4 @@
-<img src='app/assets/images/logo2.png'/>
+<img src='app/assets/images/logo2.png' width="410" height="220">
 
 # Q4U Web Application
 
