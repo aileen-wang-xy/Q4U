@@ -32,7 +32,8 @@ class DealsController < ApplicationController
 
       UserMailer.with(user: @collector, creator: @creator).collector_email.deliver_later
       UserMailer.with(user: @creator, collector: @collector).creator_email.deliver_later
-      redirect_to :action => :show, id: @deal.id
+      # redirect_to :action => :show, id: @deal.id
+      redirect_to :controller=>'deals', :action => :index
     end
   end
 end

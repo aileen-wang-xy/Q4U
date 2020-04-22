@@ -15,16 +15,12 @@ gem 'webpacker', '~> 5.0'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
-# Use Active Model has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+
 
 
 # Flexible authentication solution for Rails with Warden
-gem 'devise'
+gem 'devise', '~> 4.7', '>= 4.7.1'
 # RailsAdmin is a Rails engine that provides an easy-to-use interface for managing your data.
-# gem 'rails_admin', git: 'https://github.com/sferik/rails_admin.git'
 gem 'rails_admin', '~> 2.0', '>= 2.0.2'
 gem 'cancancan'
 # Provides a better error page for Rails and other Rack apps
@@ -50,17 +46,19 @@ end
 group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
+  # WebDriver is a tool for writing automated tests of websites. It aims to mimic the behaviour of a real user, and as such interacts with the HTML of the application.
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
-  # great tool for creating test objects in RSpec
+  # Great tool for creating test objects in RSpec
   gem 'factory_bot_rails', '~> 5.1', '>= 5.1.1'
   # rspec-rails extends Rails' built-in testing framework to support rspec
   gem 'rspec-rails', '~> 4.0.0'
-  # for debugging
+  # For debugging
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]	
-  # ensures a clean state for testing
+  # Ensures a clean state for testing
   gem 'database_cleaner'
+  # Extracting `assigns` and `assert_template` from ActionDispatch.
   gem 'rails-controller-testing'
 end
 

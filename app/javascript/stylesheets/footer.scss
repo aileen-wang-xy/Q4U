@@ -6,7 +6,10 @@
     text-align: left;
     font: normal 16px sans-serif;
     padding: 45px 50px;
+    position: relative;
+    bottom: 0px;
   }
+
 .footer-distributed .footer-left p {
     color: #8f9296;
     font-size: 14px;
@@ -24,4 +27,12 @@
     float: right;
     margin-top: 6px;
     max-width: 180px;
+}
+
+
+.wrapper {
+  min-height: calc(100vh - 280px);
+}
+.footer{
+  height: 150px;
 }

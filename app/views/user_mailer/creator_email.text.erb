@@ -1,7 +1,11 @@
-Request collected
+Post was collected
 ===============================================
 
-Your request have been collected on queue4u.herokuapp.com,
-The request was collected by: <%= @collector.name %>.<br>
+<%= @user.name.capitalize() %>, your post was successfully collected by <%= @collector.name.capitalize() %> on queue4u.herokuapp.com.<br><br>
+
+<%= @collector.name.capitalize() %>'s contact information:<br>
+Contact Number: <%= @collector.contact_no %><br>
+Email: <%= @collector.email %><br><br>
 
 Have a great day!
+

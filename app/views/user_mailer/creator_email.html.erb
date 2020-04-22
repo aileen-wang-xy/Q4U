@@ -4,11 +4,14 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Request collected</h1>
-    <p>
-      Your request have been collected on queue4u.herokuapp.com,
-      The request was collected by: <%= @collector.name %>.<br>
-    </p>
-    <p>Have a great day!</p>
+    <h1 class='login'>Post Collected</h1>
+    <h5 class='login'>
+      <%= @user.name.capitalize() %>, your post was successfully collected by <%= @collector.name.capitalize() %> on queue4u.herokuapp.com.<br><br>
+
+      <%= @collector.name.capitalize() %>'s contact information:<br>
+      Contact Number: <%= @collector.contact_no %><br>
+      Email: <%= @collector.email %><br><br>
+    </h5>
+    <h5 class='login'>Have a great day!</h5>
   </body>
 </html>
