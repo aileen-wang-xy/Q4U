@@ -5,14 +5,14 @@ class UserMailer < ApplicationMailer
       @user = params[:user]
       @creator = params[:creator]
       @url  = 'https://queue4u.herokuapp.com/user/sign_in'
-      mail(to: @user.email, subject: 'Deal collected on Q4U Site')
+      mail(to: @user.email, subject: 'Made a deal on Q4U Site')
     end
 
     def creator_email
       @user = params[:user]
       @collector = params[:collector]
       @url  = 'https://queue4u.herokuapp.com/user/sign_in'
-      mail(to: @user.email, subject: 'Request collected on Q4U Site')
+      mail(to: @user.email, subject: 'Your post was collected on Q4U Site')
     end
 
 end

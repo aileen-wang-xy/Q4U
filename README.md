@@ -43,7 +43,7 @@ For local development download git repository, navigate to the downloaded folder
 
 + open the application on localhost:3000
 ````
-There are two databases are used, SQLite3 for development and PostgreSQL for deployment. An error with SQLite3 might occur for Windows 10 users running locally. Simply solution is **gem uninstall sqlite3** and **gem install sqlite3** , then go through steps again. OR update Gemfile **gem ‘sqlite3’, git: “https://github.com/larskanis/sqlite3-ruby", branch: “add-gemspec”**, and go through steps again.
+There are two databases are used, SQLite3 for development and PostgreSQL for deployment. An error with SQLite3 might occur for Windows 10 users running locally. Simply solution is **gem uninstall sqlite3** and **gem install sqlite3** , then go through steps again. The other solution is to replace **gem ‘sqlite3’, ‘~>1.4’**  by **gem ‘sqlite3’, git: “https://github.com/larskanis/sqlite3-ruby", branch: “add-gemspec”** in Gemfile, and go through steps again.
 
 #### 3. Test
 RSpec framework is installed for testing as well as other tools specified in Gemfile. All testing cases are under spec folder. 

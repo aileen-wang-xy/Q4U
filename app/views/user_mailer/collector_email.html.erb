@@ -4,12 +4,14 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Deal collected</h1>
-    <p>
-      You have successfully collected deal on queue4u.herokuapp.com,
-      your username is: <%= @user.name %>,
-      The request was created by: <%= @creator.name %>.<br>
-    </p>
-    <p>Have a great day!</p>
+    <h1 class='login'>Made a Deal</h1>
+    <h5 class='login'>
+      <%= @user.name.capitalize() %>, you have successfully collected <%= @creator.name.capitalize() %>'s post on queue4u.herokuapp.com.<br>
+
+      <%= @creator.name.capitalize() %>'s contact information:<br>
+      Contact Number: <%= @creator.contact_no %><br>
+      Email: <%= @creator.email %>
+    </h5>
+    <h5 class='login'>Have a great day!</h5>
   </body>
 </html>
