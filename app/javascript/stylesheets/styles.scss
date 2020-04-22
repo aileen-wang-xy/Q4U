@@ -120,10 +120,15 @@ color: #fff;
 // -------------------------  span ends -------------------------
 
 // -------------------------  image begins -------------------------
-// .logo {
-//   width: 82px;
-//   height: 44px;
-// }
+
+a.img {
+  background: 0 0;
+}
+a:active, a.img:hover {
+  background: rgba(#EEEFEC, 0.1);
+  color: #fff;
+}
+
 // -------------------------  image ends -------------------------
 
 // -------------------------  navbar begins -------------------------
