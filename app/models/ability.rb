@@ -32,7 +32,6 @@ class Ability
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
     
     user ||= User.new # guest user (not logged in)
-    # can :manage, :all 
     if user.superadmin_role?
       can :manage, :all
       can :access, :rails_admin       # only allow admin users to access Rails Admin
