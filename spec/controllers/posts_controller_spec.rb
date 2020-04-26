@@ -24,7 +24,7 @@ describe PostsController do
 
       it "renders the :new" do
         get 'new'
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(302)
       end
     end
 end
